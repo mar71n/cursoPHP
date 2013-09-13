@@ -6,12 +6,6 @@
 	<body>
 		<div id='header'>Encabezado con el logo</div>
 		<div id='navbar'>
-			<ul>
-				<li><a href='#'>Boton</a></li>
-				<li><a href='#'>Boton</a></li>
-				<li><a href='#'>Boton</a></li>
-				<li><a href='#'>Boton</a></li>
-				<li><a href='#'>Boton</a></li>
-			</ul>
+			<?php require_once('botonera.template.php'); ?>
 		</div>
 		<div id='content'>
