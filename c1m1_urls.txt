@@ -1,0 +1,24 @@
+Sergio Minutoli
+sminutoli.it@gmail.com
+
+URL: Uniform Resource Location
+Una manera estandarizada de describir la localizacion de un recurso
+
+http://www.midominio.com
+protocolo://dominio:puerto/carpeta/subcarpeta/recurso.algo#hash?var1=val1&var2&val2&varN=valN
+
+1. protocolo: http, https, ftp, file
+2. dominio: puede ser una IP o una cadena de caracteres que está registrada en algún DNS
+3. puerto: por defecto el puerto asignado al webserver es el 80, pero puedo especificar otro
+4. ruta: si yo no asigno ruta, es la carpeta del webserver
+5. recurso: si yo no asigno recurso, el webserver dispone de un listado de posibles recursos por default
+6. hash: me da información sobre una ubicación en el recurso
+7. variables: un conjunto de key/value separados por &
+
+URL relativas
+-------------
+<img src='images/pepe.jpg' />
+Cuando yo no especifico ni protocolo, ni dominio, ni puerto, ni ruta, el navegador lo asume de su ubicación actual
+
+<a href='?id=4' />
+<a href='#top' />
