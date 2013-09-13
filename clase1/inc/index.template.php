@@ -1,2 +1,2 @@
-			<h1>Titulo de sección</h1>
-			<p>Contenido simulado</p>
+<h1>Bienvenido</h1>
+<p>Esta es el inicio de la aplicación, espero que te sea útil</p>
