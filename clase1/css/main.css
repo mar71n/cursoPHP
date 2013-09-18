@@ -39,8 +39,8 @@ ul, body {
 	color: gray;
 }
 #navbar ul li a.active {
-	/*background-color: white;*/
-	color: red;
+	color: orange;
+	font-weight: bold;
 }
 #footer {
 	background-color: black;
