@@ -14,10 +14,10 @@
 		//si en el as defino dos variables, el foreach me va a dar el $key y el $value
 		//como estoy iterando una matriz, $key va a ser la posicion (0,1,2)
 		//el $value va a ser el array que define al botón
+	    $ruta = $_SERVER['PHP_SELF'];
+		$info= pathinfo($ruta);
 		$base = '<li><a %s href="%s">%s</a></li>';
 		foreach( $botones as $key=>$value ){
-		    $ruta = $_SERVER['PHP_SELF'];
-			$info= pathinfo($ruta);
 			$esactiv = '';
 			//var_dump($info['basename'], $value['link']);
 			if( $info['basename'] == $value['link']){
