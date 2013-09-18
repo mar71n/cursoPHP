@@ -1,5 +1,6 @@
 <?php
-	/*
+	if ( !defined('INICIALIZADO')) die('no tiene permisos.');
+;	/*
 		encapsulo todo en una función para evitar sobreescribir variables que eran globales
 	*/
 	function dibujarBotones(){

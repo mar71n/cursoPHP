@@ -3,6 +3,7 @@
 	//en PHP la definión de las variables si está fuera de funciones es global
 	//PHP no es un lenguaje tipado, tiene "tipado mágico"
 	$titulo = 'Bienvenido';
+	require('configuracion.php');
 	
 	/* la función include recibe un String como parámetro con la ubicación del archivo */
 	/* sino encuentro el recurso, include arroja un Warning */
