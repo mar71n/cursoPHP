@@ -38,7 +38,10 @@ ul, body {
 	background-color: white;
 	color: gray;
 }
-
+#navbar ul li a.active {
+	/*background-color: white;*/
+	color: red;
+}
 #footer {
 	background-color: black;
 	color: white;

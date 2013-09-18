@@ -14,13 +14,21 @@
 		//si en el as defino dos variables, el foreach me va a dar el $key y el $value
 		//como estoy iterando una matriz, $key va a ser la posicion (0,1,2)
 		//el $value va a ser el array que define al botón
-		$base = '<li><a href="%s">%s</a></li>';
+		$base = '<li><a %s href="%s">%s</a></li>';
 		foreach( $botones as $key=>$value ){
+		    $ruta = $_SERVER['PHP_SELF'];
+			$info= pathinfo($ruta);
+			$esactiv = '';
+			//var_dump($info['basename'], $value['link']);
+			if( $info['basename'] == $value['link']){
+			//	echo $value['link']. ' - ' .$info['basename'];
+				$esactiv = 'class="active"';
+			}
 			//sprintf recibe una cadena que puedo reemplazos marcados con %s
 			//por cada %s que puse le agrego un parametro a la funcion indicando con qué reemplazo
 			//printf ese reemplazo lo escribe inmediatamente (hace echo)
 			//sprintf me devuelve un string para que pueda trabajar
-			$botonesHTML .= sprintf($base, $value['link'], $value['nombre']);
+			$botonesHTML .= sprintf($base, $esactiv, $value['link'], $value['nombre']);
 			$botonesHTML .= "\r\n"; // esto es igual a $botonesHTML = $botonesHTML . '';
 		}
 		return $botonesHTML;

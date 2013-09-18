@@ -3,3 +3,8 @@ mejor ''
 y "" sol si tengo que reemplazar
 "" tambien caracteres especiales como \r \n \t
 
+http://ar.groups.yahoo.com/group/educacionIT_php_110913/
+
+pathinfo
+
+
