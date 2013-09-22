@@ -1,0 +1,35 @@
+Pequeña tarea: investigar y armar un .html con ejemplos de todos los tipos de <input> que existen o de otras etiquetas que puede tener adentro un <form> (<select>, <textarea>, <button>)
+
+--
+
+funciones que me sirven para descomponer una URL
+pathinfo( $url );
+pathinfo( $url, $opcion );
+
+Arrays asociativos que genera PHP automágicamente
+$_SERVER[] -> me da información sobre el pedido y el recurso
+	$_SERVER['PHP_SELF'] -> me indica el archivo que fue pedido
+$_GET[]
+$_POST[]
+
+Constantes, definir y saber si está definida
+define('nombre', valor )
+defined('nombre')
+
+isset() función que me dice si una variable existe en memoria
+error_reporting() Cómo apagar/prender Notice, Warning
+
+restringir el acceso utilizando una constante
+
+CSS
+---
+.nombre_clase afecta a los elementos que tengan un atributo class='nombre_clase'
+
+#id_elemento afecta a los elementos que tengan un atributo id=''
+
+p.ej.: a.activo afecta a los <a class='activo'>
+p.ej.: #botonera afecta a cualquier elemento que tenga id='botonera'
+
+composiciones en CSS
+#navbar ul li a.activo
+afecta a un <a class='activo'> que esté dentro de un <li> que esté dentro de un <ul> que esté dentro de alguien id='navbar'

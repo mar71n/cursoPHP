@@ -1,0 +1,34 @@
+Estructura de una URL
+
+PHP como un lenguaje que se procesa en el servidor, un archivo PHP se compone de segmentos de texto plano (estático, fuera de las llaves de PHP) y segmentos de proceso (dentro de llaves de PHP).
+Escribir algo fuera de <?php es equivalente a hacer echo o print de eso.
+----
+Uso de las comillas en PHP
+La comilla simple siempre construye un String literal 'Hola $nombre' genera Hola $nombre
+La comilla doble implica reemplazos internos "Hola $nombre"  esto podría generar Hola Pepe
+La comilla doble también reconoce caracteres especiales:
+\r return
+\n newline
+\t tab
+
+Separar en secciones -> incluir fragmentos de código en en el proceso
+include
+require
+include_once
+require_once
+
+Niveles de advertencias y errores: Notice, Warning, FatalError
+----
+Tipos de datos: PHP no es tipado, pero evalúa en el momento el tipo
+var_dump() -> me permite conocer el tipo y valor en memoria de una variable o más
+
+echo() genera una salida con el String que le paso como parametro
+print() es un alias de echo, funciona de la misma forma
+printf() me permite ingresar un String que contiene caracteres de reemplazo dentro 'Hola %s' y luego ingreso cada valor de forma secuencial
+
+sprintf() funciona igual que printf() pero DEVUELVE un String en vez imprimir en la salida
+
+Arrays Asociativos
+Una variable que puede almacenar muchos valores, que están referidos con posiciones de tipo String.
+
+Vimos por arriba foreach como estructura de loop que recorre el Array.
