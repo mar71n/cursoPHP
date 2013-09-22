@@ -1,3 +1,3 @@
 <?php
-var_dump(pathinfo("c:\"));
+var_dump(pathinfo('C:\\'));
 ?>
