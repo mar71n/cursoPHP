@@ -10,6 +10,7 @@
 		$botones[] = array('nombre'=>'Alta Producto', 'link'=>'alta-producto.php');
 		$botones[] = array('nombre'=>'Listado de Productos', 'link'=>'listado-productos.php');
 		$botones[] = array('nombre'=>'Perfil de Usuario', 'link'=>'perfil.php');
+		$botones[] = array('nombre'=>'Alta Usuario', 'link'=>'alta-usuario.php');
 		
 		$botonesHTML = '';
 		//si en el as defino dos variables, el foreach me va a dar el $key y el $value
