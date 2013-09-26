@@ -7,7 +7,7 @@
 <!-- Voy por post para no mostrar la clave en el url, pero tambien porque voy a mandar archivos (la foto)
 con enctype='multipart/form-data' habilito la transferencia de archivos
 -->
-<form metod='post' id='alta-usuario' name='alta-usuario' enctype='multipart/form-data' action='alta-usuario.php'>
+<form method='post' id='alta-usuario' name='alta-usuario' enctype='multipart/form-data' action='alta-usuario.php' >
 <input type='hidden' name='alta-usuario' id='alta-usuario' value='Alta usuario'/>
 	<p>Usuario          <input type='text' name='usuario' id='usuario'  placeholder='nombre de usuario' /> </p>
 	<p>Nombre           <input type='text' name='nombre' id='nombre' /> </p>

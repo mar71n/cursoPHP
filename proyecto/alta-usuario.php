@@ -1,11 +1,13 @@
  <?php
- 
-	$vengoForm = $_SERVER['REQUEST_METHOD'] == 'POST';
+	require_once('alta-usuario-validar.php');
+ 	$vengoForm = $_SERVER['REQUEST_METHOD'] == 'POST';
 	
 	// esta estrategia es mas util, me permite identificar
 	$vengoForm = isset($_POST['alta-usuario']);
 	if ($vengoForm ){
-		
+		// var_dump( $_POST);die();
+		$errores = validarDatos( $_POST);
+		$sectorActivo = $_POST['sector'];
 	} else {
 		$sexoM = 'checked="checked"';
 		$sexoF = '';
