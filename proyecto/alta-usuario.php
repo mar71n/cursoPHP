@@ -7,14 +7,17 @@
 	if ($vengoForm ){
 		
 	} else {
-		$sexoM = 'selected="selected"';
+		$sexoM = 'checked="checked"';
 		$sexoF = '';
 		$errores = '';
 		$sectorActivo = '';
 	}
+	
+	require_once('inc/funciones.php');
+	$sectores = dibujoSectores( $sectorActivo );
  
 	require_once('configuracion.php');
-	$titulo = 'Alta Usuarios';
+	$titulo = 'Alta de Usuarios';
 	include('inc/encabezado.template.php');
 	include_once('inc/alta-usuario.template.php');
 	include_once('inc/pie.template.php');
