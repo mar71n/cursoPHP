@@ -1,29 +1,21 @@
 <?php
+	require_once('c3-e2_funciones.php');
+	$datos = getPaises();
+	
+	$activo = '';
+	if( isset( $_GET['pais'] ) ) $activo = $_GET['pais'];
+	$opciones = dibujoSelect( 'pais', $datos, $activo );
 
-    $datos[] = array('valor'=>'arg', 'texto'=>'Argentina');
-    $datos[] = array('valor'=>'bra', 'texto'=>'Brasil');
-    $datos[] = array('valor'=>'bol', 'texto'=>'Bolivia');
-    $datos[] = array('valor'=>'chi', 'texto'=>'Chile');
-    $datos[] = array('valor'=>'uru', 'texto'=>'Uruguay');
-    $datos[] = array('valor'=>'par', 'texto'=>'Paraguay');
-	
-	$opciones = '<SELECT>';
-	$maqueta= '<option value="{VALUE}" {SELECTED}> {TEXTO} </option>';
-	$find = array('{VALUE}','{SELECTED}','{TEXTO}');
-	foreach ($datos as $pais){
-		$replace = array($pais['valor'], '', $pais['texto']);
-		$opciones .= str_replace($find, $replace, $maqueta);
-	}
-	$opciones .= '</select>';
-	
+
 ?>
 <html>
 	<head>
 	</head>
 	<body>
-		<form>
-			<?php echo $opciones ?>
-
+		<form action='' method=''>
+			<?php echo $opciones ;?>
+			<input type='hidden' name='ACTION' value='ALTA_PAIS' />
+			<input type='submit' />
 		</form>
 	</body>
 </html>
