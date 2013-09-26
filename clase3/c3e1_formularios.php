@@ -49,7 +49,7 @@ asi se puede guardar la url a ese estado.
     <hr>
     
     <textarea rows="4" cols="50" name='comentario'>
-    At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. 
+    Completar ... 
     </textarea><br>
     
     <input list="browsers" name='browsers'>
