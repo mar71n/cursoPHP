@@ -9,8 +9,8 @@
 	$vengoForm = isset($_POST['alta-usuario']);
 
 	if ($vengoForm ){
-		 var_dump( $_POST, $_FILES);die();
-		$errores = validarDatos( $_POST);
+		//var_dump( $_POST, $_FILES);die();
+		$errores = validarDatos( $_POST, $_FILES);
 		$sectorActivo = $_POST['sector'];
 	} else {
 		$sexoM = 'checked="checked"';

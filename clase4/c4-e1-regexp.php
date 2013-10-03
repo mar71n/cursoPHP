@@ -1,6 +1,7 @@
 <?php
 	$patron = '/^[a-zA-Z0-9_-]{6,16}$/';
-	$valores = array('pepe','pepitos','cañete','');
+	$patron = '/^image\/.+$/';
+	$valores = array('pepe','pepitos','cañete','image/png');
 	echo "<p> Patron : $patron ";
 	echo "<pre>";
 	foreach($valores as $valor){
