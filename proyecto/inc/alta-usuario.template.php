@@ -28,7 +28,13 @@ con enctype='multipart/form-data' habilito la transferencia de archivos
 	<p>  <input type='submit' value='Alta' /></p>
 	
 	<p class='error'>
-		<?php echo $errores;?>
+		<?php 
+        if (!empty($errores)){
+            foreach ($errores as $campo=>$valor){
+                echo "<p> $campo : $valor </p>";
+            }
+        }
+        ?>
 	</p>
 	
 </form>
