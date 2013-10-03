@@ -29,6 +29,7 @@ con enctype='multipart/form-data' habilito la transferencia de archivos
 	
 	<p class='error'>
 		<?php 
+        var_dump(FILTER_VALIDATE_EMAIL);
         if (!empty($errores)){
             foreach ($errores as $campo=>$valor){
                 echo "<p> $campo : $valor </p>";

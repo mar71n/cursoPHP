@@ -8,6 +8,10 @@
 		if (empty($campos['dni'] )){
 			$errores['dni'] = 'Debe completar dni';
 		}
+        
+        if (!filter_var($campos['email'],FILTER_VALIDATE_EMAIL)){
+            $errores['email'] = 'seguro que eso es un email???';
+        }
 			
 		return $errores; 
 	}
