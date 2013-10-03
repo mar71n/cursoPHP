@@ -6,4 +6,6 @@
 	//es una buena práctica utilizar mayúsculas para definir constantes
 	//el beneficio de la constante es que me aseguro que nadie puede sobreescribirla o cambiarle el tipo de dato
 	define('INICIALIZADO', true);
+    define('PRODUCCION', false);
+
 ?>
