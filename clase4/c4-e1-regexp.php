@@ -17,4 +17,10 @@
 	}
 
 	echo "con valor de filter_var <br/>";
+//un patrón que define que empiece con la cadena 'image/'
+	//notar que la barra va escapada con \
+	$patron = '/^image\//';
+	var_dump( preg_match($patron, 'image/fruta' ) );
+	var_dump( preg_match($patron, 'imagen/fruta' ) );
+	var_dump( preg_match($patron, 'pimage/fruta' ) );
 ?>
