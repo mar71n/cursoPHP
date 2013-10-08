@@ -1,4 +1,5 @@
 <?php
+	//http://php.net/manual/en/function.preg-match.php
 	$patron = '/^[a-zA-Z0-9_-]{6,16}$/';
 	$patron = '/^image\/.+$/';
 	$valores = array('pepe','pepitos','cañete','image/png');
