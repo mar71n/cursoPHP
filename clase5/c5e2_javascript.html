@@ -13,6 +13,10 @@
 		// los array son secuenciales
 		var colores = ['rojo','azul','amarillo']; // un array
 		var dias = new Array('lu','ma','mi','ju','vi','sa','do'); // utra forma de definir array
+		var total = dias.length;
+		for(var i=0; i < total; i++){
+			console.log(dias[i]);
+		}
 		
 		// para asociar palabras a valores uso objetos
 		var persona = new Object();
@@ -21,6 +25,13 @@
 		persona['edad'] = 50; // equivala a persona.edad
 		
 		persona2 = {nombre: "Pepe", apellido: "Galleta", edad: 50};
+		console.log(persona2);
+		persona2.edad = persona2.edad - 10;
+		console.log(persona2);
+		
+		for(var propiedad in persona2){
+			console.log(propiedad, persona2[propiedad]);
+		}
 		
 	</script>
 	<p> Un parrafo que viene despues
