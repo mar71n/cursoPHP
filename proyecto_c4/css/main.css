@@ -1,0 +1,50 @@
+body {
+	font-family: Arial;
+	font-size: 15px;
+}
+ul, body {
+	margin: 0px;
+	padding: 0px;
+}
+/* selector por ID, #id_que_quiero */
+#header {
+	height: 100px;
+	background-color: yellow;
+}
+#content {
+	min-height: 400px;
+}
+#navbar {
+	background-color: orange;
+}
+#navbar ul {
+	list-style: none;
+	overflow: hidden;
+	text-indent: 0px;
+}
+#navbar ul li {
+	
+}
+#navbar ul li a {
+	text-decoration: none;
+	display: block;
+	background-color: gray;
+	color: white;
+	float: left;
+	margin-right: 1em;
+	padding: 1em; /* em es una medida relativa al tamaño del cuerpo tipográfico */
+}
+#navbar ul li a:hover {
+	background-color: white;
+	color: gray;
+}
+#navbar ul li a.activo {
+	background-color: red;
+	color: gray;
+}
+#footer {
+	background-color: black;
+	color: white;
+	font-size: 80%;
+	text-align: center;
+}
