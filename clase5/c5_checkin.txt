@@ -1,0 +1,10 @@
+CheckIn
+-
+Validaciones
+soporte de expresiones regulares
+como llegan los type='file' a PHP, $_FILES
+	file_exists()
+	mkdir()
+	move_uploaded_file()
+simular INSERT en la base
+	header('location: nueva_pagina.php')

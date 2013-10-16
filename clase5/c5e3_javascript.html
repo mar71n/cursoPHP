@@ -1,6 +1,13 @@
 <html>
 	<head>
 		<title>DOM</title>
+		<style>
+			.importante {
+				border: 1px dashed red;
+				padding: 1em;
+				color: green;
+			}
+		</style>
 	</head>
 	<body>
 		<h1>Titulo muy importante</h1>
@@ -10,7 +17,7 @@
 		<div id='contenedor'>
 			
 		</div>
-		<img src='..\proyecto_c4\img\pandolfo.jpg' />
+		<img src='southpark.jpg' />
 		<form name='mi_formulario'>
 			<input type='text' name='nombre' />
 			<input type='text' name='apellido' />
@@ -24,8 +31,27 @@
 		   document.getElementsByClassName('a1')
 		*/
 			var parrafos = document.getElementsByTagName('p');
-			parrafos[0].align='right';
-			parrafos[0].innerHTML = 'Este texto <em>nuevo</em>';
+			parrafos[0].align = 'right';
+			parrafos[0].dato = '289098';
+			parrafos[0].innerHTML = 'Este texto es <em>nuevo</em>';
+			parrafos[0].className = 'importante';
+			parrafos[0].style.color = 'red';
+			// .innerHTML refiere al HTML interno del elemento que sea
+			var mi_div = document.getElementById('contenedor');
+			mi_div.innerHTML = parrafos[0].innerHTML;
+			var inputNombre = document.getElementsByName('nombre')[0];
+			inputNombre.value = 'Pepe';
+			// .className leo o asigno una clase (el atributo class='')
+			// .id leer el id
+			// .style (me da acceso a los estilos vinculados a ese objeto)
+			// .style.color
+			// .style.backgroundColor
+			// .style.border
+			// .style.padding
+			// .style.margin
+			//
+			// .src (si es de tipo <img> puedo leer o asignar una nueva imagen
+			// .href (si es de tipo <a> puedo leer o asignar una nueva URL)
 		</script>
 	</body>
 </html>

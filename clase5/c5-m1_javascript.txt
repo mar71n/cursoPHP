@@ -1,0 +1,17 @@
+javascript
+-
+Es un lenguaje que NO es java
+Es un lenguaje de script que es interpretado por un navegador
+Es un lenguaje que se ejecuta en el cliente
+
+Cosas que puede hacer:
+Interactuar con el usuario y con el cliente (puedo medir la pantalla, saber la hora local del cliente)
+Puedo hacer pedidos de forma asincrónica (música de misterio)
+Manipulación del DOM (Document Object Model, representación en javascript del HTML)
+Puedo validar amablemente
+
+Cosas que no puede hacer:
+No puedo validar de forma segura
+Crear archivos o modificarlos en el servidor
+No puedo conectarme a una base de datos
+No puedo guardar variables de sesion
