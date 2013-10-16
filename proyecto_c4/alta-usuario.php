@@ -31,6 +31,11 @@
 			//después me redirecciono
 			header('location: listado-productos.php');
 		}
+		$scriptErrores = '';
+		foreach( $errores as $campo=>$error ){
+			$scriptErrores .= "addClass('error', '$campo');\r\n";
+		}
+		
 		$errores = implode( $errores, ', ' ); //implode concatena un Array y me da un String
 		$sectorActivo = $_POST['sector'];
 		
@@ -38,6 +43,7 @@
 		$sexoM = 'checked="checked"';
 		$sexoF = '';
 		$errores = '';
+		$scriptErrores = 'alert("esto es de PHP")';
 		$sectorActivo = '';
 	}
 	

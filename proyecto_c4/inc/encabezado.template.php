@@ -2,6 +2,8 @@
 	<head>
 		<title><?php echo $titulo; ?></title>
 		<link href='css/main.css' rel='stylesheet' type='text/css' />
+		<!-- incluyo mi libreria de funciones -->
+		<script src='js/funciones.js'></script>
 	</head>
 	<body>
 		<div id='header'>Encabezado con el logo</div>

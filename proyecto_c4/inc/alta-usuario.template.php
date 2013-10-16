@@ -6,9 +6,9 @@
 <form id='alta-usuario' name='alta-usuario' method='post' enctype='multipart/form-data'>
 	
 	<p>Usuario: <input type='text' id='usuario' name='usuario' required placeholder='Nombre de usuario' /></p>
-	<p>Nombre: <input type='text' id='nombre' name='nombre' /></p>
-	<p>Apellido: <input type='text' id='nombre' name='apellido' /></p>
-	<p>DNI: <input type='text' id='nombre' name='dni' required /></p>
+	<p>Nombre: <input onblur='if( !this.value ) addClass("error", this )' type='text' id='nombre' name='nombre' /></p>
+	<p>Apellido: <input type='text' id='apellido' name='apellido' /></p>
+	<p>DNI: <input type='text' id='dni' name='dni' required /></p>
 	<p>Sector: <?php echo $sectores; ?></p>
 	<p>
 		Masculino <input type='radio' id='sexo-m' name='sexo' value='m' <?php echo $sexoM; ?> />
@@ -25,5 +25,8 @@
 	<p class='error'>
 		<?php echo $errores; ?>
 	</p>
+	<script>
+		<?php echo $scriptErrores; ?>
+	</script>
 	
 </form>

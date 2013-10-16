@@ -1,3 +1,50 @@
+/*
+	La sintaxis de CSS es la siguiente
+	
+	selector {
+		regla1: valor1;
+		reglaN: valorN;
+	}
+	
+	selector de etiqueta
+	
+	"todos los <p>"
+	p {
+	}
+	
+	selector por ID
+	todos los elementos que tengan un atributo id='barra'
+	#barra {
+	}
+	
+	selector por clase
+	todos los elementos que tengan un atributo clase='error'
+	.error {
+	}
+	
+	selectores compuestos (sumo subconjuntos)
+	todos los <p>, <a> y <img>
+	
+	p, a, img, #barra, .fruta {
+	
+	}
+	
+	selectores por herencia
+	
+	Cualquier elemento class='ok' que esté dentro de un <span> que esté dentro de cualquier elemento id='main'
+	#main span .ok {
+	}
+	
+	investiguen los pseudo-selectores
+	tr:hover las filas cuando sobre ellas con el mouse
+	:first
+	
+	investiguen selectores de CSS3
+	p:nth-child(2) el segundo parrafo
+	a[href^=http:] todos los <a> cuyo href comience en http:
+	
+*/
+
 body {
 	font-family: Arial;
 	font-size: 15px;
@@ -47,4 +94,8 @@ ul, body {
 	color: white;
 	font-size: 80%;
 	text-align: center;
+}
+
+.error {
+	background-color: red;
 }
