@@ -1,11 +1,5 @@
 <?php
-	function getSectores(){
-		$datos[] = array('valor'=>'1', 'texto'=>'Campo');
-		$datos[] = array('valor'=>'2', 'texto'=>'Desarrollo');
-		$datos[] = array('valor'=>'3', 'texto'=>'Procesamiento');
-		$datos[] = array('valor'=>'4', 'texto'=>'RRHH');
-		return $datos;
-	}
+	require_once('inc/db.php');
 
 	function dibujoSectores($sectorActivo) {
 		return dibujoSelect('sector', getSectores(),$sectorActivo);
