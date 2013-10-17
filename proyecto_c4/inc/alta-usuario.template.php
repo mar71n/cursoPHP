@@ -3,7 +3,7 @@
 <!-- voy por POST para que no se vea la clave en la URL -->
 <!-- voy por POST porque voy a adjuntar un archivo, necesito si o si POST -->
 <!-- con el enctype multipart/form-data estoy habilitando la transferencia de archivos -->
-<form id='alta-usuario' name='alta-usuario' method='post' enctype='multipart/form-data'>
+<form id='alta_usuario' name='alta_usuario' method='post' enctype='multipart/form-data'>
 	
 	<p>Usuario: <input type='text' id='usuario' name='usuario' required placeholder='Nombre de usuario' /></p>
 	<p>Nombre: <input onblur='if( !this.value ) addClass("error", this )' type='text' id='nombre' name='nombre' /></p>

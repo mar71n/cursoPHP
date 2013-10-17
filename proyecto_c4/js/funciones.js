@@ -35,7 +35,12 @@ function addClass( clase, el ){
 	return el;
 }
 
-alert('TENGO QUE CODEAR EL REMOVE CLASS!');
-function removeClass(){
-	
+// alert('TENGO QUE CODEAR EL REMOVE CLASS!');
+function removeClass(clase, el){
+	el.className = el.className.replace(clase, '');
+	return el;
+}
+
+function mismoValor( elA, elB){
+	if (getEl(elA).value != getEl(elB).value) addClass('error', elA);
 }
