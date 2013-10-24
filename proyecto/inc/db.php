@@ -8,10 +8,14 @@ $db_setings['base']='clasesphp';
                         $db_setings['usuario'], 
 						$db_setings['clave'],
 						$db_setings['base']);
-if (!$cnx) die('error al conectar');
+if (!$cnx) {
+    logError("no se pudo conectar");
+    die("no conecto");
+}
 
 function logError($mensaje, $descripcion){
-	
+	$archivolog = fopen("log.txt","a");
+    fwrite($archivolog, $mensage." - ".$descripcion);
 }
 
 function ejecutarSQL($sql){
