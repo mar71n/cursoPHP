@@ -1,0 +1,9 @@
+
+//Funciones de Arrays en javascript
+
+var amigos = [ 'Chacho', 'Checho' ];
+amigos.push( 'Chicha' ); //agrega un elemento al final del array, retorna el nuevo .length del array
+amigos.pop(); //remueve el ultimo elemento y lo retorna
+amigos.shift(); //remueve el primer elemento y lo retorna
+amigos.unshift( valor ); //agrega un elemento al inico del array
+amigos.splice( indice, eliminar, valor1, valor2, valorN );

@@ -1,0 +1,28 @@
+Clase 6 Check In
+--
+
+CSS -> 
+	La idea de CSS es seleccionar determinados elementos y aplicarle ciertas reglas
+	
+	selector por tag		p {}  afecta a todos los <p>
+	selector por clase		.noticia {}	  afecta a cualquier elemento class='noticia'
+	selector por id			#contenedor {}	afecta al elemento id='contenedor'
+	combinar				p.noticia {} 
+	agrupar					p, .noticia, #ventana {}
+	herencia				tr td {} todos los <td> que estén dentro de un <tr>
+	herencia				#contenedor td { } 
+	
+Javascript
+	DOM (Document Object Model), forma de acceder y navegar los elementos de la página
+	sintaxis de punto, utilizo punto para acceder a propiedades y métodos de los elementos
+	(concateno con +)
+	variables, for, if, funciones en javascript
+	<script></script>
+	Scripts externos...
+	document.getElementById() -> retorna un elemento o NULL
+	document.getElementsByTagName() -> retorna un Array en base al tipo de etiqueta o tag
+	document.getElementsByName() -> retorna un Array en base al atributo name
+	document.getElementsByClassName() -> retorna un Array en base al atributo class
+	
+	validación del lado del cliente: pros y contras
+	
