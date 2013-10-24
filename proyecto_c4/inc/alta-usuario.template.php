@@ -6,16 +6,16 @@
 <form id='alta_usuario' name='alta_usuario' method='post' enctype='multipart/form-data'>
 	
 	<p>Usuario: <input type='text' id='usuario' name='usuario' required placeholder='Nombre de usuario' /></p>
-	<p>Nombre: <input onblur='if( !this.value ) addClass("error", this )' type='text' id='nombre' name='nombre' /></p>
-	<p>Apellido: <input type='text' id='apellido' name='apellido' /></p>
-	<p>DNI: <input type='text' id='dni' name='dni' required /></p>
+	<p>Nombre: <input onkeyup='validarVacio(this)' onblur='validarVacio(this)' type='text' id='nombre' name='nombre' /></p>
+	<p>Apellido: <input onblur='validarVacio(this)' type='text' id='apellido' name='apellido' /></p>
+	<p>DNI: <input onblur='validarVacio(this)' type='text' id='dni' name='dni' required /></p>
 	<p>Sector: <?php echo $sectores; ?></p>
 	<p>
 		Masculino <input type='radio' id='sexo-m' name='sexo' value='m' <?php echo $sexoM; ?> />
 		Femenino <input type='radio' id='sexo-f' name='sexo' value='f' <?php echo $sexoF; ?> />
 	</p>
-	<p>Clave <input type='password' id='clave' name='clave' required /></p>
-	<p>Clave2 <input type='password' id='clave2' name='clave2' required /></p>
+	<p>Clave <input onblur='validarVacio(this)' type='password' id='clave' name='clave' required /></p>
+	<p>Clave2 <input onkeyup='mismoValor(this, "clave")' onblur='mismoValor(this, "clave")' type='password' id='clave2' name='clave2' required /></p>
 	<p>Email <input type='email' id='email' name='email' /></p>
 	<p>Nacimiento <input type='date' id='nacimiento' name='nacimiento' /></p>
 	<p>Foto <input type='file' id='imagen' name='imagen' accept='image/*' /></p>

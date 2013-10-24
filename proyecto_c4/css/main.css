@@ -100,3 +100,9 @@ ul, body {
 .error {
 	background-color: red;
 }
+.importante {
+	border: 5px solid magenta;
+}
+.error.importante {
+	font-weight: bold;
+}

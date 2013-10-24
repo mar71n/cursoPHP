@@ -1,12 +1,6 @@
 <?php
 	
-	function getSectores(){
-		$datos[] = array('valor'=>'3', 'texto'=>'Campo');
-		$datos[] = array('valor'=>'2', 'texto'=>'Desarrollo');
-		$datos[] = array('valor'=>'4', 'texto'=>'Procesamiento');
-		$datos[] = array('valor'=>'1', 'texto'=>'RRHH');
-		return $datos;
-	}
+	require_once('inc/db.php');
 	
 	//dibujoSectores "envuelve" a la función genérica dibujoSelect
 	//de alguna forma estoy particularizando eso que era genérico
