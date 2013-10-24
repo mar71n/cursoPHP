@@ -14,22 +14,6 @@
 		if( $campos['sexo'] == 'm' ) $campos['sexo'] = 1;
 		else $campos['sexo'] = 2;
 		
-		$sql = "
-			INSERT INTO usuario
-			( usuario, nombre, apellido, clave, dni, idsector, sexo, ruta_imagen , fecha_alta )
-			VALUES
-			(
-			 '$campos[usuario]',
-			 '$campos[nombre]',
-			 '$campos[apellido]',
-			 '$campos[clave]',
-			 '$campos[dni]',
-			 $campos[sector],
-			 '$campos[sexo]',
-			 '',
-			now()			 
-			)
-		";
-		ejecutarSQL( $sql );
+		return usuarioGuardar($campos);
 	}
 ?>

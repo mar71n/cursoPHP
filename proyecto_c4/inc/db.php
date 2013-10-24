@@ -9,9 +9,12 @@
 	if( !$cnx ) die( 'Error de conexión' );
 	
 	function logError( $mensaje, $descripcion ){
-		echo $mensaje;
-		echo $descripcion;
-		die( 'Chicos, ponganse las pilas, estaría bueno que incorporen el momento exacto en que sucede este log y usar el modo APPEND para que se sumen lineas en ese archivo' );
+		$log[] = date('d/m/Y h:i:s');
+		$log[] = "Error: $mensaje";
+		$log[] = "SQL: $descripcion";
+		$log[] = "-----\r\n";
+		$log = implode( "\r\n", $log );
+		file_put_contents( RUTA_LOG, $log, FILE_APPEND );
 	}
 	
 	//de esta función espero o FALSE o un Array (en el caso del SELECT) o TRUE (en el caso de UPDATE, DELETE, INSERT)
@@ -23,6 +26,7 @@
 			return false;
 		}
 		if( $res === true ) return $res; //INSERT, UPDATE o DELETE exitosos
+		$resultado = array(); //inicializo el array para devolver siempre un Array, de otra forma un SELECT que no devuelve registros haría que esta función retorne NULL
 		while( $fila = mysqli_fetch_assoc($res) ){
 			$resultado[] = $fila;
 		}
@@ -36,5 +40,25 @@
 		ORDER BY nombre ASC
 		';
 		return ejecutarSQL($sql);
+	}
+	
+	function usuarioGuardar($campos){
+		$sql = "
+			INSERT INTO usuario
+			( usuario, nombre, apellido, clave, dni, idsector, sexo, ruta_imagen , fecha_alta )
+			VALUES
+			(
+			 '$campos[usuario]',
+			 '$campos[nombre]',
+			 '$campos[apellido]',
+			 '$campos[clave]',
+			 '$campos[dni]',
+			 $campos[sector],
+			 '$campos[sexo]',
+			 '',
+			now()			 
+			)
+		";
+		return ejecutarSQL( $sql );
 	}
 ?>

@@ -19,4 +19,7 @@
 	
 	define('PRODUCCION', $lineas[0][1] == 'si' );
 	define('RUTA_IMAGENES', $lineas[1][1] );
+	define('RUTA_LOG', $lineas[2][1] );
+	
+	date_default_timezone_set('America/Argentina/Buenos_Aires');
 ?>

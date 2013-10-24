@@ -35,14 +35,13 @@
 	#main span .ok {
 	}
 	
-	investiguen los pseudo-selectores                           \
-	tr:hover las filas cuando sobre ellas con el mouse          |
-	:first                                                      |
-	                                                             > http://librosweb.es/css_avanzado/capitulo_3/selectores_de_css_3.html
-	investiguen selectores de CSS3                              |
-	p:nth-child(2) el segundo parrafo                           |
-	a[href^=http:] todos los <a> cuyo href comience en http:    /
-    
+	investiguen los pseudo-selectores
+	tr:hover las filas cuando sobre ellas con el mouse
+	:first
+	
+	investiguen selectores de CSS3
+	p:nth-child(2) el segundo parrafo
+	a[href^=http:] todos los <a> cuyo href comience en http:
 	
 */
 
