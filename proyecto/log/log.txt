@@ -1,0 +1,13 @@
+ -  -  -  -  -  - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;
+ - SELECT idsector as valor, nombre as texto FROM sector;24/10/2013 02:53:51
+ - SELECT idsector as valor, nombre as texto FROM sector;24/10/2013 02:53:52
