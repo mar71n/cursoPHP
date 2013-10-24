@@ -1,0 +1,31 @@
+#listado {
+	margin: auto; /* se utiliza para centrar */
+	margin-top: 1em;
+}
+#listado a {
+	color: white;
+	text-decoration: none;
+}
+th {
+	height: 30px;
+	background-color: black;
+	color: white;
+}
+tfoot {
+	background-color: black;
+	text-align: center;
+	color: white;
+}
+tfoot td {
+	height: 24px;
+}
+
+tr.impar {
+	background-color: #ddd;
+}
+td.activo {
+	border-left: 4px solid yellow;
+}
+td.vacio {
+	vertical-align: middle;
+}
