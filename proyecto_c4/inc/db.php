@@ -42,6 +42,11 @@
 		return ejecutarSQL($sql);
 	}
 	
+	function getUsuarios(){
+		$sql = 'SELECT * FROM usuario';
+		return ejecutarSQL($sql);
+	}
+	
 	function usuarioGuardar($campos){
 		$sql = "
 			INSERT INTO usuario
