@@ -16,4 +16,5 @@
 	}
     define('PRODUCCION', $lineas[0][1] == 'si');
    	define('RUTA_IMAGENES', $lineas[1][1] );
+   	define('LUGAR', $lineas[2][1] );
 ?>
