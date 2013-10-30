@@ -13,34 +13,7 @@
 		<th><!-- delete --></th>
 	</thead>
 	<tbody>
-		<tr>
-			<td colspan='8' class='vacio'>
-				<img src='app_img/exclamacion.png' />
-				No se han encontrado registros
-			</td>
-		</tr>
-	</tbody>
-	<tbody>
-		<tr class='impar'>
-			<td class='activo'><img src='app_img/usuario_masc.png' /></td>
-			<td class='genero'>pepito22</td>
-			<td>Pepe Biondi</td>
-			<td>sector</td>
-			<td><a href='#'><img src='app_img/email.png' /></a></td>
-			<td>34</td>
-			<td><a href='#'><img src='app_img/editar.png' /></a></td>
-			<td><a href='#'><img src='app_img/borrar.png' /></a></td>
-		</tr>
-		<tr class='img/pepito22.png'>
-			<td><img src='img/pandolfo.jpg' height='64' width='64' /></td>
-			<td class='genero'>pepito22</td>
-			<td>Pepe Biondi</td>
-			<td>sector</td>
-			<td><a href='#'><img src='app_img/email.png' /></a></td>
-			<td>34</td>
-			<td><a href='#'><img src='app_img/editar.png' /></a></td>
-			<td><a href='#'><img src='app_img/borrar.png' /></a></td>
-		</tr>
+		<?php echo $listado_body; ?>
 	</tbody>
 	<tfoot>
 		<tr>
