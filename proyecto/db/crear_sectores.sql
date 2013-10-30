@@ -1,5 +1,5 @@
 CREATE TABLE sector(
-	idsector INT NOT NULL AUTO_INCREMENT,
+	idsector INT NOT NULL,
 	nombre VARCHAR(30)
 );
 
