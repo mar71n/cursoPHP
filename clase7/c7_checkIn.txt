@@ -1,0 +1,12 @@
+Clase 7 CheckIn
+----
+Base de datos
+1. Configuración de host, user, pass y dbname (optativo en variables)
+PHP tiene una serie de funciones nativas vinculadas a mysql
+mysqli_ es una versión mejorada de mysql_
+2. Me conecto: mysqli_connect()
+3. Construyo un query, un string que tiene la consulta
+4. Ejecuto el query (string) usando mysqli_query()
+5a. Este resultado puede ser false si el servidor mysql dió error
+5b. El resultado puede ser true (INSERT, UPDATE, DELETE) o un recurso mysql que tengo que extraer de alguna forma en caso del SELECT
+6. mysqli_fetch_assoc convierte este recurso abstracto en un Array asociativo de PHP, avanzando un puntero interno que tiene el recurso mysql
