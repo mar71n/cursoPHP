@@ -11,7 +11,13 @@
 	if ($vengoForm ){
 		//var_dump( $_POST, $_FILES);die();
 		$errores = validarDatos( $_POST, $_FILES);
-		$sectorActivo = $_POST['sector'];
+        if (!empty($errores)){
+            $sectorActivo = $_POST['sector'];
+            $usuario = $_POST['usuario'];
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $dni = $_POST['dni'];
+        }
 	} else {
 		$sexoM = 'checked="checked"';
 		$sexoF = '';
