@@ -1,10 +1,11 @@
 <?php
+require_once('restricciones.php');
 $db_setings['ruta']='localhost';
 $db_setings['usuario']='root';
-$db_setings['clave']='';
+$db_setings['clave']='memysql636775';
 $db_setings['base']='clasesphp';
 
-@ $cnx = mysqli_connect($db_setings['ruta'], 
+$cnx = mysqli_connect($db_setings['ruta'], 
                         $db_setings['usuario'], 
 						$db_setings['clave'],
 						$db_setings['base']);

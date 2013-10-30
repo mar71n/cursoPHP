@@ -1,4 +1,5 @@
 <?php
+    require_once('restricciones.php');
 	require_once('inc/db.php');
 
 	function dibujoSectores($sectorActivo) {
