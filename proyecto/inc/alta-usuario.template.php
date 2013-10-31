@@ -10,10 +10,10 @@ con enctype='multipart/form-data' habilito la transferencia de archivos
 -->
 <form method='post' id='alta-usuario' name='alta-usuario' enctype='multipart/form-data' action='alta-usuario.php' >
 <input type='hidden' name='alta-usuario' id='alta-usuario' value='Alta usuario'/>
-	<p>Usuario          <input type='text' name='usuario' id='usuario'  placeholder='nombre de usuario' /> </p>
-	<p>Nombre           <input type='text' name='nombre' id='nombre' /> </p>
-	<p>Apellido         <input type='text' name='apellido' id='apellido' /> </p>
-	<p>DNI              <input type='text' name='dni' id='dni' /> </p>
+	<p>Usuario          <input type='text' name='usuario' id='usuario'  placeholder='nombre de usuario' value='<?php echo $usuario; ?>' /> </p>
+	<p>Nombre           <input type='text' name='nombre' id='nombre' value='<?php echo $nombre; ?>' /> </p>
+	<p>Apellido         <input type='text' name='apellido' id='apellido' value='<?php echo $apellido; ?>' /> </p>
+	<p>DNI              <input type='text' name='dni' id='dni' value='<?php echo $dni; ?>' /> </p>
 	<p>Sector (select)  <?php echo $sectores;?> </p>
 	<fieldset>
 	<legend>Sexo	</legend>
