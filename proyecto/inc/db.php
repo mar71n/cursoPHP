@@ -41,4 +41,30 @@ function ejecutarSQL($sql){
 function getSectores(){
 	return ejecutarSQL('SELECT idsector as valor, nombre as texto FROM sector;');
 }
+
+function getUsuarios(){
+	$sql = 'SELECT * FROM usuario';
+	return ejecutarSQL($sql);
+}
+
+function usuarioGuardar($campos){
+	$sql = "
+		INSERT INTO usuario
+		( usuario, nombre, apellido, clave, dni, idsector, sexo, ruta_imagen , fecha_alta )
+		VALUES
+		(
+		 '$campos[usuario]',
+		 '$campos[nombre]',
+		 '$campos[apellido]',
+		 '$campos[clave]',
+		 '$campos[dni]',
+		 $campos[sector],
+		 '$campos[sexo]',
+		 '',
+		now()			 
+		)
+	";
+	return ejecutarSQL( $sql );
+}
+
 ?>
