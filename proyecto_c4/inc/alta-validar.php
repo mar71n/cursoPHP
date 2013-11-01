@@ -1,5 +1,5 @@
 <?php
-	
+	require_once( 'inc/db.php' );
 	/**
 		@param	Array $_POST
 		@return Array de errores
@@ -12,7 +12,9 @@
 		//http://net.tutsplus.com/tutorials/other/8-regular-expressions-you-should-know/
 		$patron = '/^[a-z0-9_-]{6,16}$/';
 		$usuarioLower = strtolower($campos['usuario']);
-		if( !preg_match( $patron, $usuarioLower ) ){
+		if( existeUsuario( $campos['usuario'] ) ){
+			$errores['usuario'] = 'El nombre de usuario ya existe';
+		} else if( !preg_match( $patron, $usuarioLower ) ){
 			$errores['usuario'] = 'Debe completar usuario con al menos 6 caracteres';
 		}
 		
@@ -32,7 +34,8 @@
 			$errores['clave2'] = 'Las contraseñas deben coincidir';
 		}
 		
-		if( !empty( $campos['imagen'] ) ){
+		//var_dump($campos); die();
+		if( $campos['imagen']['error'] != 4 ){
 			//esta validación no es obligatoria, sólo se hace si hay valor adentro del campo imagen
 			$imagen = $campos['imagen'];
 			
