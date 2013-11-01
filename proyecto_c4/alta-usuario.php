@@ -29,7 +29,7 @@
 			guardarDatos( $_POST );
 			//realmente grabo los datos: INSERT y grabo el archivo físico de la imagen si la hay
 			//después me redirecciono
-			header('location: listado-productos.php');
+			header('location: listado-usuarios.php');
 		}
 		$scriptErrores = '';
 		foreach( $errores as $campo=>$error ){
