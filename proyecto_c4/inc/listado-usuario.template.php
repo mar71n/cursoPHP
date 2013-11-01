@@ -1,10 +1,10 @@
 <tr class='<?php echo $impar ?>'>
-	<td class='activo'><img src='app_img/usuario_masc.png' /></td>
+	<td class='<?php echo $css ?>'><img src='<?php echo $img ?>' height='64px' /></td>
 	<td class='genero'><?php echo $u['usuario']	?></td>
-	<td>Pepe Biondi</td>
-	<td>sector</td>
-	<td><a href='#'><img src='app_img/email.png' /></a></td>
-	<td>34</td>
-	<td><a href='#'><img src='app_img/editar.png' /></a></td>
-	<td><a href='#'><img src='app_img/borrar.png' /></a></td>
+	<td><?php echo "$u[nombre] $u[apellido]"?></td>
+	<td><?php echo $u['sector']	?></td>
+	<td><a href='mailto:<?php echo $u['email']?>'><img src='app_img/email.png' /></a></td>
+	<td><?php echo $u['edad']?></td>
+	<td><a href='?action=editar&id=<?php echo $u['idusuario']	?>'><img src='app_img/editar.png' /></a></td>
+	<td><a href='?action=borrar&id=<?php echo $u['idusuario']	?>'><img src='app_img/borrar.png' /></a></td>
 </tr>
