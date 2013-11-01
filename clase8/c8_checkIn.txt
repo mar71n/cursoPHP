@@ -1,0 +1,11 @@
+Clase 8 checkIn
+----
+Revisión de secuencia para conectarnos
+Por qué está bueno hacer una función ejecutarSQL()
+
+funciones de fecha: ejemplo del calendario
+listado de usuarios
+
+usar un buffer para capturar la salida para controlar el momento en el que escribo el código fuente
+ob_start()
+ob_get_clean()
