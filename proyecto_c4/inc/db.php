@@ -91,7 +91,7 @@
 	
 	function existeUsuario( $usuario ){
 		$sql = "
-		SELECT idusuario
+		SELECT usuario
 		FROM usuario
 		WHERE usuario = '$usuario'
 		";
