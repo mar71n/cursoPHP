@@ -1,7 +1,7 @@
 <?php
 	$db_settings['ruta'] = 'localhost';
 	$db_settings['usuario'] = 'root';
-	$db_settings['clave'] = 'root';
+	$db_settings['clave'] = '123456';
 	$db_settings['base'] = 'clasesphp';
 	
 	$cnx = mysqli_connect( $db_settings['ruta'], $db_settings['usuario'],$db_settings['clave'],$db_settings['base']);
@@ -67,8 +67,8 @@
 				
 		$sql = "
 		SELECT 
-			count(idusuario) as total, 
-			ceil( count(idusuario) / $registros ) as paginas
+			count(usuario) as total, 
+			ceil( count(usuario) / $registros ) as paginas
 		FROM usuario
 		WHERE activo";
 		$paginado = ejecutarSimpleSQL($sql);
@@ -77,7 +77,7 @@
 		$inicio = ($pagina-1) * $registros;
 		
 		$sql = "
-		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		SELECT u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, NULL as email,
 		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
 		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
 		WHERE activo
