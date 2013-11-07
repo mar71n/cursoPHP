@@ -8,6 +8,7 @@ CREATE TABLE usuario(
 	fecha_nac datetime,
 	clave varchar(50), 
 	dni varchar(10), 
+	email varchar(50), 
 	idsector int, 
 	sexo int, 
 	ruta_imagen varchar(100), 
