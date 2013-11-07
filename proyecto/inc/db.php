@@ -38,8 +38,35 @@ function ejecutarSQL($sql){
 	return $resultado;
 }
 
+function ejecutarSimpleSQL($sql){
+	return ejecutarSQL( $sql, true );
+}
+
+//esto filtra valores puros, arrays y matrices
+function filtrarCampos( $campos ){
+	global $cnx;
+	if( !is_array($campos) ) return mysqli_real_escape_string( $cnx, $campos );
+	foreach( $campos as $key=>$value ){
+		//hago un llamado recursivo, ahora puedo presumir en los pasillos, "yo uso funciones recursivas, ¿viste?"
+		$copia[ $key ] = filtrarCampos( $value );
+	}
+	return $copia;
+}
+
 function getSectores(){
 	return ejecutarSQL('SELECT idsector as valor, nombre as texto FROM sector;');
+}
+
+function getUsuario($u, $c){
+	$u = filtrarCampos($u);
+	$c = filtrarCampos($c);
+	$sql="
+	SELECT idusuario
+	FROM usuario
+	WHERE usuario = $u
+	";
+	$usuario = ejecutarSimpleSQL($sql);
+	return $usuario;
 }
 
 function getUsuarios(){
