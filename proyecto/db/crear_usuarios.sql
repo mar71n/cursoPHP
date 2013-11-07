@@ -1,4 +1,7 @@
+DROP TABLE usuario;
+
 CREATE TABLE usuario(
+    idusuario int AUTO_INCREMENT PRIMARY KEY,
 	usuario int not null, 
 	nombre varchar(50), 
 	apellido varchar(50), 
