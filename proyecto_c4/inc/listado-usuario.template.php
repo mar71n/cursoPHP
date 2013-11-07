@@ -6,5 +6,5 @@
 	<td><a href='mailto:<?php echo $u['email']?>'><img src='app_img/email.png' /></a></td>
 	<td><?php echo $u['edad']?></td>
 	<td><a href='?action=editar&id=<?php echo $u['idusuario']	?>'><img src='app_img/editar.png' /></a></td>
-	<td><a href='?action=borrar&id=<?php echo $u['idusuario']	?>'><img src='app_img/borrar.png' /></a></td>
+	<td><a onclick='return confirm("¿Está seguro que desea eliminar al usuario?");' href='?action=borrar&id=<?php echo $u['idusuario']	?>'><img src='app_img/borrar.png' /></a></td>
 </tr>

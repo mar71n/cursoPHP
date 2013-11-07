@@ -25,19 +25,12 @@
 		$_POST['imagen'] = $_FILES['imagen'];
 		$errores = validarDatos( $_POST );
 		if( empty($errores) ){
-				require_once('inc/alta-guardar.php');
+			require_once('inc/alta-guardar.php');
 			guardarDatos( $_POST );
 			//realmente grabo los datos: INSERT y grabo el archivo físico de la imagen si la hay
 			//después me redirecciono
 			header('location: listado-usuarios.php');
 		}
-        if (!empty($errores)){
-            $sectorActivo = $_POST['sector'];
-            $usuario = $_POST['usuario'];
-            $nombre = $_POST['nombre'];
-            $apellido = $_POST['apellido'];
-            $dni = $_POST['dni'];
-        }
 		$scriptErrores = '';
 		foreach( $errores as $campo=>$error ){
 			$scriptErrores .= "addClass('error', '$campo');\r\n";

@@ -5,10 +5,10 @@
 <!-- con el enctype multipart/form-data estoy habilitando la transferencia de archivos -->
 <form id='alta_usuario' name='alta_usuario' method='post' enctype='multipart/form-data'>
 	
-	<p>Usuario: <input type='text' id='usuario' name='usuario' required placeholder='Nombre de usuario' value='<?php echo $usuario; ?>' /></p>
-	<p>Nombre: <input onkeyup='validarVacio(this)' onblur='validarVacio(this)' type='text' id='nombre' name='nombre' value='<?php echo $nombre; ?>'/></p>
-	<p>Apellido: <input onblur='validarVacio(this)' type='text' id='apellido' name='apellido' value='<?php echo $apellido; ?>'/></p>
-	<p>DNI: <input onblur='validarVacio(this)' type='text' id='dni' name='dni' required value='<?php echo $dni; ?>'/></p>
+	<p>Usuario: <input type='text' id='usuario' name='usuario' required placeholder='Nombre de usuario' /></p>
+	<p>Nombre: <input onkeyup='validarVacio(this)' onblur='validarVacio(this)' type='text' id='nombre' name='nombre' /></p>
+	<p>Apellido: <input onblur='validarVacio(this)' type='text' id='apellido' name='apellido' /></p>
+	<p>DNI: <input onblur='validarVacio(this)' type='text' id='dni' name='dni' required /></p>
 	<p>Sector: <?php echo $sectores; ?></p>
 	<p>
 		Masculino <input type='radio' id='sexo-m' name='sexo' value='m' <?php echo $sexoM; ?> />

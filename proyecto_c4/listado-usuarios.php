@@ -2,6 +2,20 @@
 	$titulo = 'Listado de usuarios';
 	$css_de_la_pagina = "<link href='css/listado.css' rel='stylesheet' type='text/css' />";
 	require_once('configuracion.php');
+	require_once('inc/db.php');
+	
+	if( isset($_GET['action']) ){
+		switch( $_GET['action'] ){
+			case 'borrar':
+			usuarioDesactivar( $_GET['id'] );
+			header( 'location: listado-usuarios.php' );
+			break;
+			
+			case 'editar':
+			
+			break;
+		}
+	}
 		
 	//empiezo a capturar cualquier echo/print que suceda
 	//ob output buffer
@@ -25,7 +39,6 @@
 		}
 		return ob_get_clean(); //recupero todo lo que capturé
 	}
-	require_once('inc/db.php');
 	
 	$pAct = 1;
 	if( isset($_GET['pagina']) ) $pAct = (int) $_GET['pagina'];
@@ -33,7 +46,9 @@
 	$pSig = $pAct+1;
 	$pAnt = $pAct-1;
 	
-	$opt = array('pagina'=>$pAct, 'registros'=>10);
+	$opt = array('pagina'=>$pAct);
+	if( isset( $_GET['busqueda'] ) ) $opt['busqueda'] = $_GET['busqueda'];
+	
 	$usuariosTodo = getUsuarios( $opt );
 	$listado_body = getUsuariosHTML( $usuariosTodo['datos'] );
 	
