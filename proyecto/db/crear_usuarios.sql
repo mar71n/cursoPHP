@@ -1,10 +1,14 @@
+DROP TABLE usuario;
+
 CREATE TABLE usuario(
+    idusuario int AUTO_INCREMENT PRIMARY KEY,
 	usuario int not null, 
 	nombre varchar(50), 
 	apellido varchar(50), 
 	fecha_nac datetime,
 	clave varchar(50), 
 	dni varchar(10), 
+	email varchar(50), 
 	idsector int, 
 	sexo int, 
 	ruta_imagen varchar(100), 

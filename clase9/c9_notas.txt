@@ -1,0 +1,3 @@
+javascripy 
+alert() retorna undefine, confirm() retorna si o no, promp() retorna lo que se tipea
+

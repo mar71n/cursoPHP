@@ -1,9 +1,19 @@
 <?php
+	require('configuracion.php');
 	
 	//en PHP la definión de las variables si está fuera de funciones es global
 	//PHP no es un lenguaje tipado, tiene "tipado mágico"
 	$titulo = 'Bienvenido';
-	require('configuracion.php');
+	
+	// siempre chequeo contra el submit
+	$vengoForm = isset($_POST['login']);
+	
+	if($vengoForm){
+		require_once('inc/db.php');
+		$usuario = getUsuario( $_POST['login_usuario'], $_POST['login_clave']);
+		if($usuario) die("alto login!");
+	}
+	
 	
 	/* la función include recibe un String como parámetro con la ubicación del archivo */
 	/* sino encuentro el recurso, include arroja un Warning */

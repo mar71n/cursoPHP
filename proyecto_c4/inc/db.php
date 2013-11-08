@@ -1,7 +1,7 @@
 <?php
 	$db_settings['ruta'] = 'localhost';
 	$db_settings['usuario'] = 'root';
-	$db_settings['clave'] = '123456';
+	$db_settings['clave'] = '';
 	$db_settings['base'] = 'clasesphp';
 	
 	$cnx = mysqli_connect( $db_settings['ruta'], $db_settings['usuario'],$db_settings['clave'],$db_settings['base']);
@@ -40,7 +40,8 @@
 	}
 	//esto filtra valores puros, arrays y matrices
 	function filtrarCampos( $campos ){
-		if( !is_array($campos) ) return mysqli_real_escape_string( $campos );
+		global $cnx;
+		if( !is_array($campos) ) return mysqli_real_escape_string( $cnx, $campos );
 		foreach( $campos as $key=>$value ){
 			//hago un llamado recursivo, ahora puedo presumir en los pasillos, "yo uso funciones recursivas, ¿viste?"
 			$copia[ $key ] = filtrarCampos( $value );
@@ -58,29 +59,45 @@
 	}
 	
 	function getUsuarios( $opciones=null ){
-		if( empty($opciones) ){
-			$opciones['pagina'] = 1;
-			$opciones['registros'] = 10;
+		
+		$pagina = 1;
+		if( $opciones && $opciones['pagina'] ) $pagina = $opciones['pagina'];
+		
+		$registros = 10;
+		if( $opciones && $opciones['registros'] ) $registros = $opciones['registros'];
+		
+		$where = '';
+		if( $opciones && $opciones['busqueda'] ){
+			$b = filtrarCampos( $opciones['busqueda'] );
+			
+			$where = "
+			AND ( u.usuario LIKE '%$b%' OR u.nombre LIKE '%$b%' )
+			";
 		}
-		$pagina = $opciones['pagina'];
-		$registros = $opciones['registros'];
+		
+		$orderBy = 'ORDER BY u.usuario ASC';
 				
 		$sql = "
 		SELECT 
-			count(usuario) as total, 
-			ceil( count(usuario) / $registros ) as paginas
-		FROM usuario
-		WHERE activo";
+			count(idusuario) as total, 
+			ceil( count(idusuario) / $registros ) as paginas
+		FROM usuario as u
+		WHERE activo
+		$where
+		";
 		$paginado = ejecutarSimpleSQL($sql);
 		
 		$pagina = min( $paginado['paginas'], $pagina );
+		$pagina = max( $pagina, 1 );
 		$inicio = ($pagina-1) * $registros;
 		
 		$sql = "
-		SELECT u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, NULL as email,
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
 		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
 		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
-		WHERE activo
+		WHERE activo 
+		$where
+		$orderBy
 		LIMIT $inicio, $registros";
 		$usuarios = ejecutarSQL($sql);
 		
@@ -91,7 +108,7 @@
 	
 	function existeUsuario( $usuario ){
 		$sql = "
-		SELECT usuario
+		SELECT idusuario
 		FROM usuario
 		WHERE usuario = '$usuario'
 		";
@@ -120,6 +137,16 @@
 			)
 		";
 		
+		return ejecutarSQL( $sql );
+	}
+	
+	function usuarioDesactivar( $id ){
+		$id = (int) $id;
+		$sql = "
+		UPDATE usuario 
+		SET activo = false 
+		WHERE idusuario = $id
+		";
 		return ejecutarSQL( $sql );
 	}
 ?>
