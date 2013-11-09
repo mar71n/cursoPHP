@@ -19,4 +19,17 @@
 		$opciones .= "\r\n<!-- fin select -->";
 		return $opciones;
 	}
+	
+	function limitar( $n, $min, $max ){
+		//solo limito contra el maximo si es superior al minimo, no permito rangos 1,0
+		if( $max > $min ) $n = min( $n, $max );
+		$n = max( $n, $min );
+		return $n;
+	}
+	
+	function getRequest( $prop, $default=null ){
+		//$_REQUEST almacena lo que vino por $_GET y $_POST
+		if( isset( $_REQUEST[$prop] ) && !empty($_REQUEST[$prop]) ) return $_REQUEST[$prop];
+		return $default;
+	}
 ?>
