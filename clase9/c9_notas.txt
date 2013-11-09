@@ -1,3 +1,6 @@
 javascripy 
 alert() retorna undefine, confirm() retorna si o no, promp() retorna lo que se tipea
 
+alert('mensaje') => retorna undefined
+confirm('mensaje') => retorna true o false depende del aceptar/cancelar
+prompt('mensaje') => retorna un String con lo que el tipo escribió
