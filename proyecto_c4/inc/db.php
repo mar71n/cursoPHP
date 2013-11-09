@@ -1,12 +1,14 @@
 <?php
 	$db_settings['ruta'] = 'localhost';
 	$db_settings['usuario'] = 'root';
-	$db_settings['clave'] = '';
+	$db_settings['clave'] = 'root';
 	$db_settings['base'] = 'clasesphp';
 	
 	$cnx = mysqli_connect( $db_settings['ruta'], $db_settings['usuario'],$db_settings['clave'],$db_settings['base']);
 							
 	if( !$cnx ) die( 'Error de conexión' );
+	
+	require_once( 'inc/funciones.php' );
 	
 	function logError( $mensaje, $descripcion ){
 		$log[] = date('d/m/Y h:i:s');
@@ -58,6 +60,18 @@
 		return ejecutarSQL($sql);
 	}
 	
+	function getUsuario( $u, $c ){
+		$u = filtrarCampos( $u );
+		$c = filtrarCampos( $c );
+		$sql = "
+		SELECT idusuario, usuario, nombre, apellido
+		FROM usuario
+		WHERE activo 
+		AND usuario = '$u' AND clave = '$c'
+		";
+		return ejecutarSimpleSQL( $sql );
+	}
+	
 	function getUsuarios( $opciones=null ){
 		
 		$pagina = 1;
@@ -75,7 +89,9 @@
 			";
 		}
 		
-		$orderBy = 'ORDER BY u.usuario ASC';
+		$orderCampo = filtrarCampos( $opciones['orderby'] );
+		$orderType = filtrarCampos( $opciones['ordertype'] );
+		$orderBy = "ORDER BY $orderCampo $orderType";
 				
 		$sql = "
 		SELECT 
@@ -87,8 +103,7 @@
 		";
 		$paginado = ejecutarSimpleSQL($sql);
 		
-		$pagina = min( $paginado['paginas'], $pagina );
-		$pagina = max( $pagina, 1 );
+		$pagina = limitar( $pagina, 1, $paginado['paginas'] );
 		$inicio = ($pagina-1) * $registros;
 		
 		$sql = "
