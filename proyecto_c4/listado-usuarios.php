@@ -3,6 +3,7 @@
 	$css_de_la_pagina = "<link href='css/listado.css' rel='stylesheet' type='text/css' />";
 	require_once('configuracion.php');
 	require_once('inc/db.php');
+	require_once('inc/funciones.php');
 	
 	if( isset($_GET['action']) ){
 		switch( $_GET['action'] ){
@@ -40,26 +41,70 @@
 		return ob_get_clean(); //recupero todo lo que capturé
 	}
 	
-	$pAct = 1;
-	if( isset($_GET['pagina']) ) $pAct = (int) $_GET['pagina'];
+	function getHeaderHTML(){
+		$html = "<th><!-- photo --></th>";
+		//si bien parece repetir, me permite separar cómo muestro el nombre de la columna del nombre real que paso en el orderby
+		$campos[] = array( 'texto'=>'usuario', 'valor'=>'usuario' );
+		$campos[] = array( 'texto'=>'nombre', 'valor'=>'nombre' );
+		$campos[] = array( 'texto'=>'sector', 'valor'=>'sector' );
+		$campos[] = array( 'texto'=>'email', 'valor'=>'email' );
+		$campos[] = array( 'texto'=>'edad', 'valor'=>'edad' );
+		foreach( $campos as $c ){
+			$type = 'ASC';		
+			$activo = $_GET['order'] == $c['valor'];
+			
+			if( $activo && $_GET['type'] == 'ASC' ) $type = 'DESC';
+			
+			$css = $type;
+			if( $activo ) $css .= ' activo';
+			
+			
+			
+			$copia = $_GET;
+			$copia['order'] =$c['valor'];
+			$copia['type'] = $type;
+			$copia['pagina'] = 1;
+			$variables = http_build_query($copia);
+			$html .= "
+			<th><a href='?$variables' class='$css'>$c[texto]</a></th>
+			";
+		}
+		$html .= "
+		<th><!-- edit --></th>
+		<th><!-- delete --></th>
+		";
+		return $html;
+	}
+	
+	$listado_header = getHeaderHTML();
+	
+	$pAct = (int) getRequest('pagina', 1 );
 	$pAct = max( 1, $pAct ); //limito en 1 como minimo
 	$pSig = $pAct+1;
 	$pAnt = $pAct-1;
 	
 	$opt = array('pagina'=>$pAct);
-	if( isset( $_GET['busqueda'] ) ) $opt['busqueda'] = $_GET['busqueda'];
-	
+	$opt['busqueda'] = getRequest('busqueda');
+	$opt['orderby'] = getRequest('order', 'usuario');
+	$opt['ordertype'] = getRequest('type', 'ASC');
+		
 	$usuariosTodo = getUsuarios( $opt );
 	$listado_body = getUsuariosHTML( $usuariosTodo['datos'] );
 	
 	$paginado = $usuariosTodo['paginado'];
 	$listado_paginado = "";
 	if( $pAct > 1 ){
-		$listado_paginado = "<a href='?pagina=$pAnt'>anterior</a>";
+		$copia = $_GET;
+		$copia['pagina'] = $pAnt;
+		$variables = http_build_query( $copia );
+		$listado_paginado = "<a href='?$variables'>anterior</a>";
 	}
 	$listado_paginado .= "Pagina $pAct de $paginado[paginas] ($paginado[total] registros)";
 	if( $pAct < $paginado['paginas'] ){
-		$listado_paginado .= "<a href='?pagina=$pSig'>siguiente</a>";
+		$copia = $_GET;
+		$copia['pagina'] = $pSig;
+		$variables = http_build_query( $copia );
+		$listado_paginado .= "<a href='?$variables'>siguiente</a>";
 	}
 	
 	require_once('inc/encabezado.template.php');
