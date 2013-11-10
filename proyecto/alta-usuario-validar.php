@@ -19,7 +19,7 @@
 		} else if ( $campos['clave'] != $campos['clave2'] ){
 			$errores['clave2'] = 'Las contraseñas deben coincidir';
 		}
-        
+
 		if( $campos['imagen']['error'] != 4 ){
 			//esta validación no es obligatoria, sólo se hace si hay valor adentro del campo imagen
 			$imagen = $campos['imagen'];
@@ -32,7 +32,7 @@
 			}
 		}
 		
-		if( empty( $campos['acepto'] ) ){
+		if( isset( $campos['acepto'] ) ){
 			$errores['acepto'] = 'Debe aceptar los términos y condiciones';
 		}
 

@@ -20,6 +20,14 @@
             $nombre = $_POST['nombre'];
             $apellido = $_POST['apellido'];
             $dni = $_POST['dni'];
+            $clave = $_POST['clave'];
+            $clave2 = $_POST['clave2'];
+            $email = $_POST['email'];
+            $nacimiento = $_POST['nacimiento'];
+            $imagen = $_POST['imagen'];
+            if( !isset( $campos['acepto'] ) ){
+                $campos['acepto'] = '';
+            }
         } else{
             require_once('inc/alta-guardar.php');
             guardarDatos( $_POST ); // en alta-guardar.php

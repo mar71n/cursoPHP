@@ -20,12 +20,12 @@ con enctype='multipart/form-data' habilito la transferencia de archivos
 		Masculino       <input type='radio' name='sexo' id='sexo-m' value='m' <?php echo $sexoM;?> />
 		Femenino        <input type='radio' name='sexo' id='sexo-f' value='f' <?php echo $sexoF;?> />
 	</fieldset>
-	<p>Clave            <input type='password' id='clave1' name='clave[]' /> </p>
-	<p>Clave2           <input type='password' id='clave2' name='clave[]' /> </p>
-	<p>Email            <input type='text' name='email' id='email'  /> </p>
-	<p>Nacimiento       <input type='date' name='nacimiento' id='nacimiento' /> </p>
-	<p>Foto             <input type='file' name='foto' id='foto' accept='image/*' /> </p>
-	<p>  <input type='checkbox' name='' /> Acepto términos</p>
+	<p>Clave            <input type='password' id='clave1' name='clave' value='<?php echo $clave; ?>' /> </p>
+	<p>Clave2           <input type='password' id='clave2' name='clave2' value='<?php echo $clave2; ?>' /> </p>
+	<p>Email            <input type='text' name='email' id='email' value='<?php echo $email; ?>' /> </p>
+	<p>Nacimiento       <input type='date' name='nacimiento' id='nacimiento' value='<?php echo $nacimiento; ?>'/> </p>
+	<p>Foto             <input type='file' name='imagen' id='foto' accept='image/*' value='<?php echo $imagen; ?>'/> </p>
+	<p>  <input type='checkbox' name='acepto' value='<?php echo $acepto; ?>' /> Acepto términos</p>
 	<p>  <input type='submit' value='Alta' /></p>
 	
 	<p class='error'>
