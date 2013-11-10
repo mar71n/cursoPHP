@@ -115,7 +115,7 @@ function getUsuario($u, $c){
 	$campos = filtrarCampos( $campos_sin_filtrar );
 	$sql = "
 		INSERT INTO usuario
-		( usuario, nombre, apellido, clave, dni, idsector, sexo, ruta_imagen , fecha_alta )
+        ( usuario, nombre, apellido, clave, dni, idsector, sexo, ruta_imagen , fecha_alta, fecha_nac, email )
 		VALUES
 		(
 		 '$campos[usuario]',
