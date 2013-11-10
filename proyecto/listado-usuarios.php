@@ -32,6 +32,7 @@
 	function getHeaderHTML(){
 		$html = "<th><!-- photo --></th>";
 		//si bien parece repetir, me permite separar cómo muestro el nombre de la columna del nombre real que paso en el orderby
+		$campos[] = array( 'texto'=>'id', 'valor'=>'idusuario' );
 		$campos[] = array( 'texto'=>'usuario', 'valor'=>'usuario' );
 		$campos[] = array( 'texto'=>'nombre', 'valor'=>'nombre' );
 		$campos[] = array( 'texto'=>'sector', 'valor'=>'sector' );
