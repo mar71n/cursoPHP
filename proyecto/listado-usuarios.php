@@ -46,11 +46,17 @@
 	$paginado = $usuariosTodo['paginado'];
 	$listado_paginado = "";
 	if( $pAct > 1 ){
-		$listado_paginado = "<a href='?pagina=$pAnt'>anterior</a>";
+		$copia = $_GET;
+		$copia['pagina'] = $pAnt;
+		$variables = http_build_query( $copia );// http_build_query — Generar una cadena de consulta codificada estilo URL
+		$listado_paginado = "<a href='?$variables'>anterior</a>";
 	}
 	$listado_paginado .= "Pagina $pAct de $paginado[paginas] ($paginado[total] registros)";
 	if( $pAct < $paginado['paginas'] ){
-		$listado_paginado .= "<a href='?pagina=$pSig'>siguiente</a>";
+		$copia = $_GET;
+		$copia['pagina'] = $pSig;
+		$variables = http_build_query( $copia );
+		$listado_paginado .= "<a href='?$variables'>siguiente</a>";
 	}
 	require_once('inc/encabezado.template.php'); // cabecera html y botonera
 	require_once('inc/listado.template.php'); // form de busqueda y titulos columnas
