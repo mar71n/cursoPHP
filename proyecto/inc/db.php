@@ -27,16 +27,19 @@ function logError($mensaje, $descripcion){
 }
 
 function ejecutarSQL( $sql, $first=false ){
-	global $cnx;
-	$res = mysqli_query($cnx, $sql);
-	if ( !$res ) logError(mysqli_error($cnx),$sql);
-	if ( $res === true) return $res;
-    if( $first ) return mysqli_fetch_assoc($res);
-	$resultado = array(); //sino un select que no devuelve registros hace fallar la proxima linea
-	while ($fila = mysqli_fetch_assoc($res)){
-		$resultado[]=$fila;
+	global $cnx; //aviso que la variable $cnx viene de afuera		
+	$res = mysqli_query( $cnx, $sql );
+	if( !$res ){
+		logError( mysqli_error($cnx), $sql );
+		return false;
 	}
-	return $resultado;
+	if( $res === true ) return $res; //INSERT, UPDATE o DELETE exitosos
+	if( $first ) return mysqli_fetch_assoc($res);
+	$resultado = array(); //inicializo el array para devolver siempre un Array, de otra forma un SELECT que no devuelve registros haría que esta función retorne NULL
+	while( $fila = mysqli_fetch_assoc($res) ){
+		$resultado[] = $fila;
+	}
+	return $resultado; //estoy devolviendo siempre una matriz
 }
 
 function ejecutarSimpleSQL($sql){
@@ -71,29 +74,46 @@ function getUsuario($u, $c){
 }
 
 	function getUsuarios( $opciones=null ){
-		if( empty($opciones) ){
-			$opciones['pagina'] = 1;
-			$opciones['registros'] = 10;
+		
+		$pagina = 1;
+		if( $opciones && $opciones['pagina'] ) $pagina = $opciones['pagina'];
+		
+		$registros = 10;
+		if( $opciones && $opciones['registros'] ) $registros = $opciones['registros'];
+		
+		$where = '';
+		if( $opciones && $opciones['busqueda'] ){
+			$b = filtrarCampos( $opciones['busqueda'] );
+			
+			$where = "
+			AND ( u.usuario LIKE '%$b%' OR u.nombre LIKE '%$b%' )
+			";
 		}
-		$pagina = $opciones['pagina'];
-		$registros = $opciones['registros'];
+		
+		$orderCampo = filtrarCampos( $opciones['orderby'] );
+		$orderType = filtrarCampos( $opciones['ordertype'] );
+		$orderBy = "ORDER BY $orderCampo $orderType";
 				
 		$sql = "
 		SELECT 
 			count(idusuario) as total, 
 			ceil( count(idusuario) / $registros ) as paginas
-		FROM usuario
-		WHERE activo";
+		FROM usuario as u
+		WHERE activo
+		$where
+		";
 		$paginado = ejecutarSimpleSQL($sql); /*$paginado resulta una array con [total] y [paginas]*/
 		
-		$pagina = min( $paginado['paginas'], $pagina );
+		$pagina = limitar( $pagina, 1, $paginado['paginas'] );
 		$inicio = ($pagina-1) * $registros;
 		
 		$sql = "
 		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
 		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
 		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
-		WHERE activo
+		WHERE activo 
+		$where
+		$orderBy
 		LIMIT $inicio, $registros";
 		$usuarios = ejecutarSQL($sql);
 		

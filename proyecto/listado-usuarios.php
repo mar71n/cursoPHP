@@ -4,6 +4,7 @@
 	require_once('configuracion.php');
 	
 	require_once('inc/db.php');
+	require_once('inc/funciones.php'); // para getRequest
 	$usuarios = getUsuarios();
 	
 	//empiezo a capturar cualquier echo/print que suceda
@@ -38,8 +39,12 @@
 	$pSig = $pAct+1;
 	$pAnt = $pAct-1;
 	
-    /* las opciones de getUsuarios son la pagina y de a cuantos registros */
-	$opt = array('pagina'=>$pAct, 'registros'=>10);
+    /* las opciones de getUsuarios son la pagina ... y agregamos opciones a getUsuarios */
+	$opt = array('pagina'=>$pAct);
+	$opt['busqueda'] = getRequest('busqueda'); // unifica $_GET y $_POST
+	$opt['orderby'] = getRequest('order', 'usuario');
+	$opt['ordertype'] = getRequest('type', 'ASC');
+		
 	$usuariosTodo = getUsuarios( $opt );/*getUsuarios retorna [datos]: un array con los registros, [paginado]: un array [pagina],[total]*/
 	$listado_body = getUsuariosHTML( $usuariosTodo['datos'] );
 	
