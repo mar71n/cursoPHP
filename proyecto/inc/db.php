@@ -26,11 +26,12 @@ function logError($mensaje, $descripcion){
     fwrite($archivolog, "\n".$mensage." - ".$descripcion.date ("d/m/Y h:i:s"));
 }
 
-function ejecutarSQL($sql){
+function ejecutarSQL( $sql, $first=false ){
 	global $cnx;
 	$res = mysqli_query($cnx, $sql);
 	if ( !$res ) logError(mysqli_error($cnx),$sql);
 	if ( $res === true) return $res;
+    if( $first ) return mysqli_fetch_assoc($res);
 	$resultado = array(); //sino un select que no devuelve registros hace fallar la proxima linea
 	while ($fila = mysqli_fetch_assoc($res)){
 		$resultado[]=$fila;
@@ -69,12 +70,49 @@ function getUsuario($u, $c){
 	return $usuario;
 }
 
-function getUsuarios(){
-	$sql = 'SELECT * FROM usuario';
-	return ejecutarSQL($sql);
-}
-
-function usuarioGuardar($campos){
+	function getUsuarios( $opciones=null ){
+		if( empty($opciones) ){
+			$opciones['pagina'] = 1;
+			$opciones['registros'] = 10;
+		}
+		$pagina = $opciones['pagina'];
+		$registros = $opciones['registros'];
+				
+		$sql = "
+		SELECT 
+			count(idusuario) as total, 
+			ceil( count(idusuario) / $registros ) as paginas
+		FROM usuario
+		WHERE activo";
+		$paginado = ejecutarSimpleSQL($sql); /*$paginado resulta una array con [total] y [paginas]*/
+		
+		$pagina = min( $paginado['paginas'], $pagina );
+		$inicio = ($pagina-1) * $registros;
+		
+		$sql = "
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo
+		LIMIT $inicio, $registros";
+		$usuarios = ejecutarSQL($sql);
+		
+		$resultado['datos'] = $usuarios;
+		$resultado['paginado'] = $paginado;
+		return $resultado;
+	}
+	
+	function existeUsuario( $usuario ){
+		$sql = "
+		SELECT idusuario
+		FROM usuario
+		WHERE usuario = '$usuario'
+		";
+		$res = ejecutarSQL($sql);
+		return count($res) > 0;
+ 	}
+	function usuarioGuardar($campos_sin_filtrar){
+	$campos = filtrarCampos( $campos_sin_filtrar );
 	$sql = "
 		INSERT INTO usuario
 		( usuario, nombre, apellido, clave, dni, idsector, sexo, ruta_imagen , fecha_alta )
@@ -88,7 +126,9 @@ function usuarioGuardar($campos){
 		 $campos[sector],
 		 '$campos[sexo]',
 		 '',
-		now()			 
+		now(),
+    	'$campos[nacimiento]',
+		'$campos[email]'
 		)
 	";
 	return ejecutarSQL( $sql );

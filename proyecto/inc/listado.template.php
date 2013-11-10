@@ -18,9 +18,8 @@
 	<tfoot>
 		<tr>
 			<td colspan='8'>
-				<a href=''>anterior</a>
-				Pagina 1 de 30 (300 registros)
-				<a href=''>siguiente</a>
+                <!-- $listado_paginado se define en listado-usuarios.php, donde se incluye el precente archivo/-->
+                <?php echo $listado_paginado; ?>
 			</td>
 		</tr>
 	</tfoot>
