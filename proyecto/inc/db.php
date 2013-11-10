@@ -154,4 +154,13 @@ function getUsuario($u, $c){
 	return ejecutarSQL( $sql );
 }
 
+function usuarioDesactivar( $id ){
+	$id = (int) $id;
+	$sql = "
+	UPDATE usuario 
+	SET activo = false 
+	WHERE idusuario = $id
+	";
+	return ejecutarSQL( $sql );
+}
 ?>

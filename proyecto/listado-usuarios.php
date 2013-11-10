@@ -6,6 +6,19 @@
 	require_once('inc/db.php');
 	require_once('inc/funciones.php'); // para getRequest
 	
+	if( isset($_GET['action']) ){
+		switch( $_GET['action'] ){
+			case 'borrar':
+			usuarioDesactivar( $_GET['id'] );
+			header( 'location: listado-usuarios.php' );
+			break;
+			
+			case 'editar':
+			
+			break;
+		}
+	}
+		
 	//empiezo a capturar cualquier echo/print que suceda
 	//ob output buffer
 	function getUsuariosHTML( $usuarios ){
