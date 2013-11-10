@@ -1,5 +1,6 @@
 <tr class='<?php echo $impar ?>'>
-	<td class='activo'><img src='app_img/usuario_masc.png' /></td>
+	<td class='<?php echo $css ?>'><img src='<?php echo $img ?>' height='64px' /></td>
+    <td><?php echo $u['idusuario']?></td>
 	<td class='genero'><?php echo $u['usuario']	?></td>
 	<td><?php echo $u['nombre']?></td>
 	<td><?php echo $u['idsector']?></td>

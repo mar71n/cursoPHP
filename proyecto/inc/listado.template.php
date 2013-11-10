@@ -4,6 +4,7 @@
 <table id='listado' width='90%' border='0' cellspacing='0' cellpadding='0'>
 	<thead>
 		<th><!-- photo --></th>
+		<th><a href='ordenar...' class='asc'>id</a></th>
 		<th><a href='ordenar...' class='asc'>usuario</a></th>
 		<th><a href='ordenar...' class='asc'>nombre</a></th>
 		<th><a href='ordenar...' class='asc'>sector</a></th>
