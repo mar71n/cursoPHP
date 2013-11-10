@@ -52,7 +52,7 @@
 	if( $pAct < $paginado['paginas'] ){
 		$listado_paginado .= "<a href='?pagina=$pSig'>siguiente</a>";
 	}
-	require_once('inc/encabezado.template.php');
-	require_once('inc/listado.template.php');
-	require_once('inc/pie.template.php');
+	require_once('inc/encabezado.template.php'); // cabecera html y botonera
+	require_once('inc/listado.template.php'); // form de busqueda y titulos columnas
+	require_once('inc/pie.template.php'); 
 ?>
