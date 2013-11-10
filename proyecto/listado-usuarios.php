@@ -5,7 +5,6 @@
 	
 	require_once('inc/db.php');
 	require_once('inc/funciones.php'); // para getRequest
-	$usuarios = getUsuarios();
 	
 	//empiezo a capturar cualquier echo/print que suceda
 	//ob output buffer
@@ -29,12 +28,45 @@
 		}
 		return ob_get_clean(); //recupero todo lo que capturé
 	}
-	require_once('inc/db.php');
 	
-    
-    /* pongo pagina en 1, y si vino por GET pongo esa*/
-	$pAct = 1;
-	if( isset($_GET['pagina']) ) $pAct = (int) $_GET['pagina'];
+	function getHeaderHTML(){
+		$html = "<th><!-- photo --></th>";
+		//si bien parece repetir, me permite separar cómo muestro el nombre de la columna del nombre real que paso en el orderby
+		$campos[] = array( 'texto'=>'usuario', 'valor'=>'usuario' );
+		$campos[] = array( 'texto'=>'nombre', 'valor'=>'nombre' );
+		$campos[] = array( 'texto'=>'sector', 'valor'=>'sector' );
+		$campos[] = array( 'texto'=>'email', 'valor'=>'email' );
+		$campos[] = array( 'texto'=>'edad', 'valor'=>'edad' );
+		foreach( $campos as $c ){
+			$type = 'ASC';		
+			$activo = $_GET['order'] == $c['valor'];
+			
+			if( $activo && $_GET['type'] == 'ASC' ) $type = 'DESC';
+			
+			$css = $type;
+			if( $activo ) $css .= ' activo';
+			
+			
+			
+			$copia = $_GET;
+			$copia['order'] =$c['valor'];
+			$copia['type'] = $type;
+			$copia['pagina'] = 1;
+			$variables = http_build_query($copia);
+			$html .= "
+			<th><a href='?$variables' class='$css'>$c[texto]</a></th>
+			";
+		}
+		$html .= "
+		<th><!-- edit --></th>
+		<th><!-- delete --></th>
+		";
+		return $html;
+	}
+	
+	$listado_header = getHeaderHTML();
+	
+	$pAct = (int) getRequest('pagina', 1 );
 	$pAct = max( 1, $pAct ); //limito en 1 como minimo
 	$pSig = $pAct+1;
 	$pAnt = $pAct-1;
