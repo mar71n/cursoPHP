@@ -9,7 +9,7 @@ if(LUGAR=='casa'){
 }else{
     $db_setings['ruta']='localhost';
     $db_setings['usuario']='root';
-    $db_setings['clave']='';
+    $db_setings['clave']='123456';
     $db_setings['base']='clasesphp';
 }
 $cnx = mysqli_connect($db_setings['ruta'], 
@@ -150,6 +150,26 @@ function getUsuario($u, $c){
     	'$campos[nacimiento]',
 		'$campos[email]'
 		)
+	";
+	return ejecutarSQL( $sql );
+}
+
+function usuarioActualizar($campos_sin_filtrar){
+	$campos = filtrarCampos( $campos_sin_filtrar );
+	$sql = "
+		UPDATE usuario SET
+         usuario = '$campos[usuario]', 
+         nombre = '$campos[nombre]', 
+         apellido = '$campos[apellido]', 
+         clave = '$campos[clave]', 
+         dni = '$campos[dni]', 
+         idsector = $campos[sector], 
+         sexo = '$campos[sexo]', 
+         ruta_imagen = '$campos[ruta_imagen]', 
+         -- fecha_alta, 
+         fecha_nac = '$campos[nacimiento]', 
+         email = '$campos[email]'
+         WHERE idusuario = '$campos[idusuario]'
 	";
 	return ejecutarSQL( $sql );
 }
