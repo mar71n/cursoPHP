@@ -291,3 +291,12 @@ SQL:
 		ORDER BY  
 		LIMIT 10, 10
 -----
+14/11/2013 11:16:17
+Error: Unknown column 'nacimiento' in 'field list'
+SQL: 
+		SELECT idusuario, usuario, nombre, apellido, dni, idsector as sector, nacimiento
+		FROM usuario
+		WHERE activo 
+		AND idusuario = 23
+		
+-----

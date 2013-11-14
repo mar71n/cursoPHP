@@ -13,7 +13,7 @@
 			break;
 			
 			case 'editar':
-			
+			header( 'location: editar-usuario.php?id='.$_GET['id'] );
 			break;
 		}
 	}

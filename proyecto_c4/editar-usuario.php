@@ -1,24 +1,14 @@
 <?php
 	require_once('configuracion.php');
+	require_once('inc/db.php');
 	
-	//puedo simular data que vino por $_POST para evitar llenar el FORM
-	if( !PRODUCCION  ){
-		$_POST['alta-usuario'] = true;
-		$_POST['usuario'] = 'pepito22';
-		$_POST['email'] = 'fruta';
-		$_POST['sector'] = 1;
-		$_FILES['imagen'] = array();
-		$_FILES['imagen']['size'] = 8000;
-		$_FILES['imagen']['type'] = 'image/png';
-		$_FILES['imagen']['name'] = 'alberto.png';
-		$_FILES['imagen']['tmp_name'] = '';
-	}
-		
 	//esta estrategia es más útil, me permite identificar a mi formulario
-	$vengoForm = isset( $_POST['alta-usuario'] );
+	$vengoForm = isset( $_POST['editar-usuario'] );
 	
 	if( $vengoForm ){
-		//var_dump( $_POST, $_FILES ); die();
+		
+		var_dump($_POST);
+		die();
 		
 		require_once('inc/alta-validar.php');
 		//inyecto la imagen dentro del paquete que vino por POST
@@ -40,22 +30,29 @@
 		$sector = $_POST['sector'];
 		
 	} else {
-		$sexoM = 'checked="checked"';
+		
+		//Sino vengo del formulario (sería la primera vez) busco todos los campos de la base
+		$datos = getUsuarioByID( $_GET['id'] );
+		extract($datos);
+		
+		$sexoM = '';
 		$sexoF = '';
+		if( $sexo == 1 ){
+			$sexoM = 'checked="checked"';
+		} else {
+			$sexoF = 'checked="checked"';
+		}
+		
 		$errores = '';
-		$scriptErrores = 'alert("esto es de PHP")';
-		$sector = '';
+		$scriptErrores = '';
 	}
 		
-	$titulo = 'Alta de usuario';
-	$form_titulo = 'Formulario de alta de usuario';
-	$mensaje_submit = 'Alta de usuario';
-	$form_tipo = 'alta-usuario';
-	$acepto_tyc = "<p><input type='checkbox' id='acepto' name='acepto' required /> Acepto términos</p>
-";
-	$usuario_props = 'required';
-	
-	extract($_POST); //Declara una variable por cada posición del array
+	$titulo = 'Edición de usuario';
+	$form_titulo = 'Formulario de edición';
+	$mensaje_submit = 'Actualizar';
+	$form_tipo = 'editar-usuario';
+	$acepto_tyc = '';
+	$usuario_props = 'disabled';
 	
 	require_once('inc/funciones.php');
 	$sectores = dibujoSectores( $sector );

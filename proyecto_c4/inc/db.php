@@ -60,9 +60,15 @@
 		return ejecutarSQL($sql);
 	}
 	
-	function getUsuarioById($id){
+	function getUsuarioByID( $id ){
 		$id = (int) $id;
-		
+		$sql = "
+		SELECT idusuario, usuario, nombre, apellido, dni, idsector as sector, fecha_nac as nacimiento, sexo, email
+		FROM usuario
+		WHERE activo 
+		AND idusuario = $id
+		";
+		return ejecutarSimpleSQL( $sql );
 	}
 	
 	function getUsuario( $u, $c ){
