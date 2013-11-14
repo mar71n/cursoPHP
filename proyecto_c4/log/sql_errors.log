@@ -2,3 +2,292 @@
 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rompo todo' at line 1
 SQL: rompo todo
 -----
+31/10/2013 12:50:16
+Error: Incorrect date value: '' for column 'fecha_nac' at row 1
+SQL: 
+			INSERT INTO usuario
+			( usuario, nombre, apellido, clave, dni, idsector, sexo, ruta_imagen , fecha_alta, fecha_nac, email )
+			VALUES
+			(
+			 'lkjasd',
+			 'lkjasd',
+			 'lkjasd',
+			 'ASDFGH',
+			 '091342',
+			 4,
+			 '1',
+			 '',
+			now(),
+			 '',
+			 'LKASJD@aslkj.com'
+			)
+		
+-----
+31/10/2013 12:51:24
+Error: Incorrect date value: '' for column 'fecha_nac' at row 1
+SQL: 
+			INSERT INTO usuario
+			( usuario, nombre, apellido, clave, dni, idsector, sexo, ruta_imagen , fecha_alta, fecha_nac, email )
+			VALUES
+			(
+			 'pepeloco',
+			 'Pepe',
+			 'Loco',
+			 'pepeloco',
+			 '091342',
+			 4,
+			 '1',
+			 '',
+			now(),
+			 '',
+			 'pepeloco@htomail.com'
+			)
+		
+-----
+31/10/2013 01:29:00
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		LIMIT 0, 
+-----
+31/10/2013 01:29:19
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 4
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		LIMIT 0, 
+-----
+31/10/2013 01:47:48
+Error: Table 'clasesphp.usuarios' doesn't exist
+SQL: 
+		SELECT 
+			count(idusuario) as total, 
+			ceil( count(idusuario) / 10 ) as paginas
+		FROM usuarios
+		WHERE activo
+-----
+31/10/2013 01:48:22
+Error: Table 'clasesphp.usuarios' doesn't exist
+SQL: 
+		SELECT 
+			count(idusuario) as total, 
+			ceil( count(idusuario) / 10 ) as paginas
+		FROM usuarios
+		WHERE activo
+-----
+31/10/2013 01:49:01
+Error: Table 'clasesphp.usuarios' doesn't exist
+SQL: 
+		SELECT 
+			count(idusuario) as total, 
+			ceil( count(idusuario) / 10 ) as paginas
+		FROM usuarios
+		WHERE activo
+-----
+07/11/2013 11:19:48
+Error: Unknown column 'u.usuario' in 'where clause'
+SQL: 
+		SELECT 
+			count(idusuario) as total, 
+			ceil( count(idusuario) / 10 ) as paginas
+		FROM usuario
+		WHERE activo
+		
+			AND ( u.usuario LIKE '%%' OR u.nombre LIKE '%%' )
+			
+		
+-----
+07/11/2013 11:19:48
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%%' OR u.nombre LIKE '%%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 11:21:46
+Error: Unknown column 'u.usuario' in 'where clause'
+SQL: 
+		SELECT 
+			count(idusuario) as total, 
+			ceil( count(idusuario) / 10 ) as paginas
+		FROM usuario
+		WHERE activo
+		
+			AND ( u.usuario LIKE '%perez%' OR u.nombre LIKE '%perez%' )
+			
+		
+-----
+07/11/2013 11:21:46
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%perez%' OR u.nombre LIKE '%perez%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 11:23:20
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%marta%' OR u.nombre LIKE '%marta%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 11:23:42
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%jor%' OR u.nombre LIKE '%jor%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 11:23:45
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%jor%' OR u.nombre LIKE '%jor%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 11:23:50
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%pepe%' OR u.nombre LIKE '%pepe%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 11:23:53
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%hola%' OR u.nombre LIKE '%hola%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 11:23:58
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%chuchu%' OR u.nombre LIKE '%chuchu%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 11:24:02
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%alber%' OR u.nombre LIKE '%alber%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 11:24:09
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%borgers%' OR u.nombre LIKE '%borgers%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 11:39:38
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%algo%' OR u.nombre LIKE '%algo%' )
+			
+		ORDER BY u.usuario ASC
+		LIMIT -10, 10
+-----
+07/11/2013 12:31:16
+Error: Unknown column 'u.sector' in 'order clause'
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+		ORDER BY u.sector 
+		LIMIT 0, 10
+-----
+07/11/2013 12:32:01
+Error: Unknown column 'u.edad' in 'order clause'
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+		ORDER BY u.edad 
+		LIMIT 0, 10
+-----
+07/11/2013 12:37:35
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10, 10' at line 9
+SQL: 
+		SELECT u.idusuario, u.usuario, u.nombre, u.apellido, u.dni, u.sexo, s.nombre as sector, u.email,
+		(YEAR( CURRENT_DATE ) - YEAR( fecha_nac )) - ( DATE_FORMAT(CURDATE(),'%m-%d') < DATE_FORMAT(fecha_nac,'%m-%d') ) as edad
+		FROM usuario as u INNER JOIN sector as s ON u.idsector = s.idsector
+		WHERE activo 
+		
+			AND ( u.usuario LIKE '%pere%' OR u.nombre LIKE '%pere%' )
+			
+		ORDER BY  
+		LIMIT 10, 10
+-----

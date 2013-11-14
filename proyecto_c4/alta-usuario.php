@@ -37,20 +37,27 @@
 		}
 		
 		$errores = implode( $errores, ', ' ); //implode concatena un Array y me da un String
-		$sectorActivo = $_POST['sector'];
+		$sector = $_POST['sector'];
 		
 	} else {
 		$sexoM = 'checked="checked"';
 		$sexoF = '';
 		$errores = '';
 		$scriptErrores = 'alert("esto es de PHP")';
-		$sectorActivo = '';
+		$sector = '';
 	}
+		
+	$titulo = 'Alta de usuario';
+	$form_titulo = 'Formulario de alta de usuario';
+	$mensaje_submit = 'Alta de usuario';
+	$form_tipo = 'alta-usuario';
+	$acepto_tyc = "<p><input type='checkbox' id='acepto' name='acepto' required /> Acepto términos</p>
+";
+	extract($_POST); //Declara una variable por cada posición del array
 	
 	require_once('inc/funciones.php');
-	$sectores = dibujoSectores( $sectorActivo );
+	$sectores = dibujoSectores( $sector );
 	
-	$titulo = 'Alta de usuario';
 	require_once('inc/encabezado.template.php');
 	require_once('inc/alta-usuario.template.php');
 	require_once('inc/pie.template.php');
