@@ -9,7 +9,10 @@
 	if( $vengoForm ){
 		require_once('inc/db.php');
 		$usuario = getUsuario( $_POST['login_usuario'], $_POST['login_clave'] );
-		if( $usuario ) die('¡alto login!');
+		if( $usuario ){
+			//die('¡alto login!');
+			$_SESSION['usuario'] = $usuario;
+		}
 	}
 	
 	require_once('inc/encabezado.template.php');

@@ -41,6 +41,9 @@
 		
 		$errores = '';
 		$scriptErrores = '';
+		foreach($datos as $key=>$value){
+			$scriptErrores .= "// getEl('$key').value = '$value';\r\n";
+		}
 	}
 		
 	$titulo = 'Edición de usuario';

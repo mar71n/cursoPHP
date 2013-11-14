@@ -75,7 +75,7 @@
 		$u = filtrarCampos( $u );
 		$c = filtrarCampos( $c );
 		$sql = "
-		SELECT idusuario, usuario, nombre, apellido
+		SELECT idusuario, usuario, nombre, apellido, email
 		FROM usuario
 		WHERE activo 
 		AND usuario = '$u' AND clave = '$c'

@@ -8,6 +8,13 @@
 	
 	define('INICIALIZADO', true);
 	
+	//comienza una sesión o continúa con la que está vigente
+	session_start();
+	
+	function tienePermiso($id){
+		return $_SESSION['usuario']['usuario'] == 'admin' || $_SESSION['usuario']['idusuario'] == $id;
+	}
+	
 	//file_get_contents equivale a fopen() fread() y fclose()
 	$datos = file_get_contents( 'config.ini' );
 	$datos = trim( $datos, "\r\n" ); //elimino el enter del final
