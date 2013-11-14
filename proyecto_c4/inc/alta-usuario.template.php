@@ -1,5 +1,10 @@
-<?php require_once('restringir.php'); ?>
-<h1><?php echo $form_titulo; ?></h1>
+<?php 
+	require_once('restringir.php'); 
+	// verificar en PHP.ini que estén la opción short_open_tag en ON
+	// phpinfo();
+	// si está prendido puedo hacer <?=$variable para hacer un echo
+?>
+<h1><?php echo $form_titulo ?></h1>
 <!-- voy por POST para que no se vea la clave en la URL -->
 <!-- voy por POST porque voy a adjuntar un archivo, necesito si o si POST -->
 <!-- con el enctype multipart/form-data estoy habilitando la transferencia de archivos -->
@@ -14,8 +19,8 @@
 		Masculino <input type='radio' id='sexo-m' name='sexo' value='m' <?php echo $sexoM; ?> />
 		Femenino <input type='radio' id='sexo-f' name='sexo' value='f' <?php echo $sexoF; ?> />
 	</p>
-	<p>Clave <input onblur='validarVacio(this)' type='password' id='clave' name='clave' required /></p>
-	<p>Clave2 <input onkeyup='mismoValor(this, "clave")' onblur='mismoValor(this, "clave")' type='password' id='clave2' name='clave2' required /></p>
+	<p>Clave <input onblur='validarVacio(this)' type='password' id='clave' name='clave' <?php echo $clave_props ?> /></p>
+	<p>Clave2 <input onkeyup='mismoValor(this, "clave")' onblur='mismoValor(this, "clave")' type='password' id='clave2' name='clave2' <?php echo $clave_props ?> /></p>
 	<p>Email <input type='email' id='email' name='email' value='<?php echo $email ?>' /></p>
 	<p>Nacimiento <input type='date' id='nacimiento' name='nacimiento' value='<?php echo $nacimiento ?>' /></p>
 	<?php echo $imagen_actual; ?>

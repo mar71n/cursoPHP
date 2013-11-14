@@ -6,10 +6,7 @@
 	$vengoForm = isset( $_POST['editar-usuario'] );
 	
 	if( $vengoForm ){
-		
-		var_dump($_POST);
-		die();
-		
+				
 		require_once('inc/alta-validar.php');
 		//inyecto la imagen dentro del paquete que vino por POST
 		$_POST['imagen'] = $_FILES['imagen'];
@@ -25,9 +22,8 @@
 		foreach( $errores as $campo=>$error ){
 			$scriptErrores .= "addClass('error', '$campo');\r\n";
 		}
-		
 		$errores = implode( $errores, ', ' ); //implode concatena un Array y me da un String
-		$sector = $_POST['sector'];
+		extract( $_POST );
 		
 	} else {
 		
@@ -53,6 +49,7 @@
 	$form_tipo = 'editar-usuario';
 	$acepto_tyc = '';
 	$usuario_props = 'disabled';
+	$clave_props = '';
 	
 	require_once('inc/funciones.php');
 	$sectores = dibujoSectores( $sector );

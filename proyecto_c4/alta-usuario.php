@@ -54,6 +54,7 @@
 	$acepto_tyc = "<p><input type='checkbox' id='acepto' name='acepto' required /> Acepto términos</p>
 ";
 	$usuario_props = 'required';
+	$clave_props = 'required';
 	
 	extract($_POST); //Declara una variable por cada posición del array
 	

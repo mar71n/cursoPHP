@@ -1,7 +1,7 @@
 <?php
 	$db_settings['ruta'] = 'localhost';
 	$db_settings['usuario'] = 'root';
-	$db_settings['clave'] = '';
+	$db_settings['clave'] = 'root';
 	$db_settings['base'] = 'clasesphp';
 	
 	$cnx = mysqli_connect( $db_settings['ruta'], $db_settings['usuario'],$db_settings['clave'],$db_settings['base']);
@@ -155,12 +155,39 @@
 			 '$campos[clave]',
 			 '$campos[dni]',
 			 $campos[sector],
-			 '$campos[sexo]',
-			 '',
+			 $campos[sexo],
+			 '$campos[imagen_ruta]',
 			now(),
 			 '$campos[nacimiento]',
 			 '$campos[email]'
 			)
+		";
+		
+		return ejecutarSQL( $sql );
+	}
+	
+	function usuarioActualizar($campos_sin_filtrar){
+		$campos = filtrarCampos( $campos_sin_filtrar );
+		
+		$update_clave = '';
+		if( !empty( $campos['clave'] ) ) $update_clave = "clave = '$campos[clave]',";
+		
+		$update_imagen = '';
+		if( !empty( $campos['imagen_ruta'] ) ) $update_imagen = "ruta_imagen = '$campos[imagen_ruta]',";
+		
+		$sql = "
+			UPDATE usuario
+			SET
+			 nombre = '$campos[nombre]',
+			 apellido = '$campos[apellido]',
+			 $update_clave
+			 $update_imagen
+			 dni = '$campos[dni]',
+			 idsector = $campos[sector],
+			 sexo = $campos[sexo],
+			 fecha_nac = '$campos[nacimiento]',
+			 email = '$campos[email]'
+			WHERE idusuario = $campos[idusuario]
 		";
 		
 		return ejecutarSQL( $sql );

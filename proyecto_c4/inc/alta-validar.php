@@ -12,10 +12,17 @@
 		//http://net.tutsplus.com/tutorials/other/8-regular-expressions-you-should-know/
 		$patron = '/^[a-z0-9_-]{6,16}$/';
 		$usuarioLower = strtolower($campos['usuario']);
-		if( existeUsuario( $campos['usuario'] ) ){
-			$errores['usuario'] = 'El nombre de usuario ya existe';
-		} else if( !preg_match( $patron, $usuarioLower ) ){
-			$errores['usuario'] = 'Debe completar usuario con al menos 6 caracteres';
+		if( $campos['alta-usuario'] ){
+			
+			if( existeUsuario( $campos['usuario'] ) ){
+				$errores['usuario'] = 'El nombre de usuario ya existe';
+			} else if( !preg_match( $patron, $usuarioLower ) ){
+				$errores['usuario'] = 'Debe completar usuario con al menos 6 caracteres';
+			}
+			
+			if( empty( $campos['acepto'] ) ){
+				$errores['acepto'] = 'Debe aceptar los términos y condiciones';
+			}
 		}
 		
 		if( empty( $campos['dni'] ) ){
@@ -27,14 +34,16 @@
 			$errores['email'] = 'El email no es válido';
 		}
 		
-		$patron = '/^[a-zA-Z0-9_-]{6,16}$/';
-		if( !preg_match( $patron, $campos['clave'] ) ){
-			$errores['clave'] = 'La contraseña debe ser alfanumérica de 6 a 16 caracteres';
-		} else if ( $campos['clave'] != $campos['clave2'] ){
-			$errores['clave2'] = 'Las contraseñas deben coincidir';
+		//si estoy en el alta simpre lo hago, sino sólo si me definieron una clave
+		if( $campos['alta-usuario'] || $campos['clave'] ){
+			$patron = '/^[a-zA-Z0-9_-]{6,16}$/';
+			if( !preg_match( $patron, $campos['clave'] ) ){
+				$errores['clave'] = 'La contraseña debe ser alfanumérica de 6 a 16 caracteres';
+			} else if ( $campos['clave'] != $campos['clave2'] ){
+				$errores['clave2'] = 'Las contraseñas deben coincidir';
+			}
 		}
-		
-		//var_dump($campos); die();
+
 		if( $campos['imagen']['error'] != 4 ){
 			//esta validación no es obligatoria, sólo se hace si hay valor adentro del campo imagen
 			$imagen = $campos['imagen'];
@@ -46,10 +55,6 @@
 			if( !$check_size || !$check_type ){
 				$errores['imagen'] = 'El archivo debe ser una imagen inferior a '.($max_size/1024/1024).'mb';
 			}
-		}
-		
-		if( empty( $campos['acepto'] ) ){
-			$errores['acepto'] = 'Debe aceptar los términos y condiciones';
 		}
 		
 		return $errores;
