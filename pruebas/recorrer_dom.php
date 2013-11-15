@@ -4,6 +4,9 @@
 <script>
  // $(document).ready(function(){
 function tocarDom(){
+    // foco en id=answer746415X24X235
+    document.getElementById('answer746415X24X235').focus();
+
     // elimino un <li>
     var radio = document.getElementById('answer746415X25X239NANS');
     var litem = radio.parentNode;
