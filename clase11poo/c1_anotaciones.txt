@@ -1,0 +1,25 @@
+Toda clase es una plantilla que define estados y comportamientos de un nuevo tipo de dato...
+
+clase es un tipo de dato vinculado a un sustantivo
+los estados son los adjetivos
+los comportamientos son los verbos
+
+estados -> PHP variables -> PHPOOP propiedades
+
+comportamientos -> PHP funciones -> PHPOOP métodos
+
+class Auto {
+	color
+	peso
+	velocidadMax
+	puertas
+	combustible
+	velocidad
+	modelo
+	
+	arrancar()
+	acelerar()
+	frenar()
+	parar()
+	
+}
