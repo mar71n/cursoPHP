@@ -6,4 +6,8 @@ $auto = new Auto;
 $auto->velocidad = 200;
 echo $auto;
 
+
+
+//var_dump(get_defined_vars());
+
 ?>
