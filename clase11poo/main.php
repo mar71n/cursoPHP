@@ -1,6 +1,7 @@
 <?php
 	
 	require_once('Cliente.class.php');
+	require_once('Cuenta.class.php');
 	
 	$pepe = new Cliente();
 	$pepe->nombre = 'Jose';
@@ -17,6 +18,13 @@
 	
 	$pepe->imprimirNombreCompleto('red');
 	$cacho->imprimirNombreCompleto();
+    
+    $ocuenta = new Cuenta();
+    $ocuenta->titular = $pepe;
+    $ocuenta->saldo=1000;
+    
+    echo "<p>".$ocuenta->titular->imprimirNombreCompleto('red');
+    echo "<p>".$ocuenta->verSaldo();
     
     /*
     var_dump(get_class($pepe));
