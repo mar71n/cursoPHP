@@ -1,7 +1,7 @@
 <?php
 	$db_settings['ruta'] = 'localhost';
 	$db_settings['usuario'] = 'root';
-	$db_settings['clave'] = 'root';
+	$db_settings['clave'] = 'memysql636775';
 	$db_settings['base'] = 'clasesphp';
 	
 	$cnx = mysqli_connect( $db_settings['ruta'], $db_settings['usuario'],$db_settings['clave'],$db_settings['base']);

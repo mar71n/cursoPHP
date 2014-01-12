@@ -88,7 +88,7 @@
 	$opt['orderby'] = getRequest('order', 'usuario');
 	$opt['ordertype'] = getRequest('type', 'ASC');
 		
-	$usuariosTodo = getUsuarios( $opt );
+	$usuariosTodo = getUsuarios( $opt );/*getUsuarios retorna [datos]: un array con los registros, [paginado]: un array [pagina],[total]*/
 	$listado_body = getUsuariosHTML( $usuariosTodo['datos'] );
 	
 	$paginado = $usuariosTodo['paginado'];
@@ -96,7 +96,7 @@
 	if( $pAct > 1 ){
 		$copia = $_GET;
 		$copia['pagina'] = $pAnt;
-		$variables = http_build_query( $copia );
+		$variables = http_build_query( $copia );// http_build_query — Generar una cadena de consulta codificada estilo URL
 		$listado_paginado = "<a href='?$variables'>anterior</a>";
 	}
 	$listado_paginado .= "Pagina $pAct de $paginado[paginas] ($paginado[total] registros)";
@@ -106,8 +106,7 @@
 		$variables = http_build_query( $copia );
 		$listado_paginado .= "<a href='?$variables'>siguiente</a>";
 	}
-	
-	require_once('inc/encabezado.template.php');
-	require_once('inc/listado.template.php');
-	require_once('inc/pie.template.php');
+	require_once('inc/encabezado.template.php'); // cabecera html y botonera
+	require_once('inc/listado.template.php'); // form de busqueda y titulos columnas
+	require_once('inc/pie.template.php'); 
 ?>
