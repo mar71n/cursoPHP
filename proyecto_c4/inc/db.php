@@ -60,11 +60,22 @@
 		return ejecutarSQL($sql);
 	}
 	
+	function getUsuarioByID( $id ){
+		$id = (int) $id;
+		$sql = "
+		SELECT idusuario, usuario, nombre, apellido, dni, idsector as sector, fecha_nac as nacimiento, sexo, email
+		FROM usuario
+		WHERE activo 
+		AND idusuario = $id
+		";
+		return ejecutarSimpleSQL( $sql );
+	}
+	
 	function getUsuario( $u, $c ){
 		$u = filtrarCampos( $u );
 		$c = filtrarCampos( $c );
 		$sql = "
-		SELECT idusuario, usuario, nombre, apellido
+		SELECT idusuario, usuario, nombre, apellido, email
 		FROM usuario
 		WHERE activo 
 		AND usuario = '$u' AND clave = '$c'
@@ -144,12 +155,39 @@
 			 '$campos[clave]',
 			 '$campos[dni]',
 			 $campos[sector],
-			 '$campos[sexo]',
-			 '',
+			 $campos[sexo],
+			 '$campos[imagen_ruta]',
 			now(),
 			 '$campos[nacimiento]',
 			 '$campos[email]'
 			)
+		";
+		
+		return ejecutarSQL( $sql );
+	}
+	
+	function usuarioActualizar($campos_sin_filtrar){
+		$campos = filtrarCampos( $campos_sin_filtrar );
+		
+		$update_clave = '';
+		if( !empty( $campos['clave'] ) ) $update_clave = "clave = '$campos[clave]',";
+		
+		$update_imagen = '';
+		if( !empty( $campos['imagen_ruta'] ) ) $update_imagen = "ruta_imagen = '$campos[imagen_ruta]',";
+		
+		$sql = "
+			UPDATE usuario
+			SET
+			 nombre = '$campos[nombre]',
+			 apellido = '$campos[apellido]',
+			 $update_clave
+			 $update_imagen
+			 dni = '$campos[dni]',
+			 idsector = $campos[sector],
+			 sexo = $campos[sexo],
+			 fecha_nac = '$campos[nacimiento]',
+			 email = '$campos[email]'
+			WHERE idusuario = $campos[idusuario]
 		";
 		
 		return ejecutarSQL( $sql );

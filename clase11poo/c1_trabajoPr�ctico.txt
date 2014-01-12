@@ -1,0 +1,32 @@
+- Para validar las extracciones y depositos chequeen las funciones de PHP is_numeric()
+
+- Tengo un pequeño sistemita bancario, donde el analista indica que habría que realizar las siguientes entidades:
+
+- Cliente
+	es el que tenemos
+
+- Cuenta
+	saldo:float
+	titular:Cliente
+	Boolean extraer(float monto)
+	depositar(float monto)
+	verSaldo() -> debería imprimir el saldo
+	verInfo() -> imprime saldo e info del titular
+
+- CajaAhorro
+	saldo:float
+	interes:float
+	titular:Cliente
+	Boolean extraer(float monto) -> me indica si pude o no extraer
+	depositar(float monto)
+	verSaldo() -> debería imprimir el saldo
+	verInfo() -> imprime saldo e info del titular y el interes
+	
+- CuentaCorriente
+	saldo:float
+	limite:float
+	titular:Cliente
+	Boolean extraer(float monto)
+	depositar(float monto)
+	verSaldo() -> debería imprimir el saldo
+	verInfo() -> imprime saldo e info del titular y el limite

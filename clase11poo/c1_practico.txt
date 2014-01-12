@@ -1,0 +1,43 @@
+Empleado
+	edad:int
+	
+Cliente
+	-> ClientePyme
+	-> ClienteIndividuo
+	edad:int
+	obtenerEdad()
+	obtenerCuentas()
+
+Cuenta
+	-> CuentaSueldo
+	-> CajaAhorro
+	-> CuentaCorriente
+	numeroCuenta:int
+	saldo:float
+	crear()
+	baja()
+	consultarSaldo()
+	depositar()
+	extraer()
+	
+	
+Paquete
+	cuentas:Cuenta[]
+	servicios:Servicio[]
+	valorMensual:float
+	agregarCuenta()
+	agregarServicio()
+	
+
+Servicio
+	nombre:String
+	descripcion:String
+	valorMensual:float
+
+Sucursal
+	cantidadDeEmpleados:int
+	empleados:Empleado[]
+	direccion:String
+	id:int
+	cajeroAutomatico:Boolean
+	

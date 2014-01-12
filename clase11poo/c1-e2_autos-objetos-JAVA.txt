@@ -1,0 +1,24 @@
+<?php
+	
+	//defino una clase
+	//uso camelCase comenzando en mayúscula
+	// en vez de auto digo Auto
+	// en vez de auto_muy_loco AutoMuyLoco
+	class Auto {
+		
+		//defino propiedades
+		public $color;
+		public $peso;
+		public $puertas;
+		public $velocidadMaxima;
+		
+	}
+	
+	$mi_auto = new Auto();
+	$mi_auto->color = 'rojo'; //noten que pierdo el signo $
+	$mi_auto->peso = 2.5;
+	$mi_auto->puertas = 4;
+	$mi_auto->velocidadMaxima = 300;
+	
+	
+?>

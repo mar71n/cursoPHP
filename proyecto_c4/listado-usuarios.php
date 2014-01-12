@@ -8,12 +8,14 @@
 	if( isset($_GET['action']) ){
 		switch( $_GET['action'] ){
 			case 'borrar':
-			usuarioDesactivar( $_GET['id'] );
-			header( 'location: listado-usuarios.php' );
+			if( tienePermiso($_GET['id']) ){
+				usuarioDesactivar( $_GET['id'] );
+				header( 'location: listado-usuarios.php' );
+			}
 			break;
 			
 			case 'editar':
-			
+			header( 'location: editar-usuario.php?id='.$_GET['id'] );
 			break;
 		}
 	}
@@ -35,6 +37,13 @@
 			}
 			
 			$css = '';
+			$botonEditar = '';
+			$botonBorrar = '';
+			if( tienePermiso( $u['idusuario'] ) ){
+				$botonEditar = "<a href='?action=editar&id=$u[idusuario]'><img src='app_img/editar.png' /></a>";
+				$botonBorrar = "<a onclick='return confirm(\"¿Está seguro que desea eliminar al usuario?\");' href='?action=borrar&id=$u[idusuario]'><img src='app_img/borrar.png' /></a>";
+				$css = 'activo';
+			}
 			
 			include( 'inc/listado-usuario.template.php' );
 		}
